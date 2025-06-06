@@ -1,0 +1,22 @@
+
+> rest-express@1.6.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+node:internal/modules/esm/resolve:275
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/yasseralmohammed/msspv2/MsspClientManager-clean/node_modules/.bin/package-B719QM9h.mjs' imported from /Users/yasseralmohammed/msspv2/MsspClientManager-clean/node_modules/.bin/tsx
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:860:10)
+    at defaultResolve (node:internal/modules/esm/resolve:984:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:719:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:643:25)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:626:38)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:279:38)
+    at ModuleJob._link (node:internal/modules/esm/module_job:136:49) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/yasseralmohammed/msspv2/MsspClientManager-clean/node_modules/.bin/package-B719QM9h.mjs'
+}
+
+Node.js v23.7.0

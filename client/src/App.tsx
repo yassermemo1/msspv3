@@ -42,6 +42,8 @@ import { ServiceEditPage } from "@/components/admin/services/service-edit-page";
 import CreateSafPage from "@/pages/create-saf-page";
 import CreateCocPage from "@/pages/create-coc-page";
 import LicensePoolsPage from "@/pages/license-pools-page";
+import AdminDashboardPage from "@/pages/admin-dashboard-page";
+import ProfilePage from "@/pages/profile-page";
 import NotFound from "@/pages/not-found";
 
 function App() {
@@ -214,6 +216,20 @@ function App() {
                     <AuthGuard>
                       <PageGuard pageUrl="/settings">
                         <SettingsPage />
+                      </PageGuard>
+                    </AuthGuard>
+                  )} />
+                  <Route path="/admin" component={() => (
+                    <AuthGuard>
+                      <PageGuard pageUrl="/admin">
+                        <AdminDashboardPage />
+                      </PageGuard>
+                    </AuthGuard>
+                  )} />
+                  <Route path="/profile" component={() => (
+                    <AuthGuard>
+                      <PageGuard pageUrl="/profile">
+                        <ProfilePage />
                       </PageGuard>
                     </AuthGuard>
                   )} />
