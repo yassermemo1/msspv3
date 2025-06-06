@@ -1,0 +1,78 @@
+Overall Approach & Technology:
+
+Relational Database: We're using PostgreSQL, a powerful open-source relational database.
+Object-Relational Mapper (ORM): The NestJS backend interacts with PostgreSQL via TypeORM, which allows us to define our database schema using TypeScript classes (entities) and decorators.
+Migration-Based Schema Management: All schema changes (creating tables, adding columns, defining relationships, creating indexes) are managed through version-controlled migration scripts generated and run by TypeORM. This ensures a consistent schema across different environments and avoids data loss (synchronize: false is a key setting).
+Design Principles: The design prioritizes data integrity, scalability, query performance, security, and flexibility to accommodate the diverse needs of an MSSP.
+Key Entity Groups and Their Purpose:
+
+The database is structured around several core concepts, each represented by one or more entities (tables):
+
+Core Foundational Entities (Phase 1):
+
+User: Stores information about your internal MSSP team members.
+Key Fields: id (UUID), firstName, lastName, email (unique, indexed), password (hashed), role (enum like ADMIN, MANAGER, ENGINEER), isActive, failedLoginAttempts, isLocked, lastPasswordChangeAt, lastLoginAt, authProvider (e.g., 'local', for future LDAP).
+Purpose: User authentication, authorization (RBAC), and internal team member identification.
+Client: Represents your MSSP's customers.
+Key Fields: id (UUID), companyName (unique, indexed), contactName, contactEmail, contactPhone, address, industry, status (enum like PROSPECT, ACTIVE, ARCHIVED), clientSource (enum), notes, business intelligence fields (leadScore, estimatedDealValue, companySize enum), firstInteractionDate, and a customClientSpecificJsonData (JSONB) for initial ad-hoc details.
+Purpose: Central repository for all client information and lifecycle tracking.
+Service & Contract Management Entities (Phase 2):
+
+Service: Defines your MSSP's service catalog.
+Key Fields: id (UUID), name (unique), description, category (enum), deliveryModel (enum), basePrice (decimal), isActive, and crucially, scopeDefinitionTemplate (JSONB) to define dynamic parameters for each service.
+Purpose: Master list of services offered, with templates for how their scopes are defined.
+Contract: Manages agreements with clients.
+Key Fields: id (UUID), contractName, startDate, endDate (for expiration tracking), renewalDate, value (decimal), status (enum like DRAFT, ACTIVE, EXPIRED), documentLink, previousContractId (self-referencing for renewals).
+Relationships: Many-to-One with Client. One-to-Many with ServiceScope.
+Purpose: Tracking contractual obligations, terms, and lifecycle with clients.
+ServiceScope (or ContractService): Links specific services to a contract with unique scope details.
+Key Fields: id (UUID), scopeDetails (JSONB, populated based on Service.scopeDefinitionTemplate), price (for this instance), quantity, unit. Also includes SAF (Service Activation Form) details: safDocumentLink, safServiceStartDate, safServiceEndDate, safStatus (enum).
+Relationships: Many-to-One with Contract, Many-to-One with Service. One-to-Many with Proposal.
+Purpose: Details exactly what version/configuration of a service a client gets under a contract, including its activation status.
+Proposal: Manages sales and technical proposals.
+Key Fields: id (UUID), proposalType (enum: TECHNICAL, FINANCIAL), documentLink, version, status (enum), proposedValue (decimal), currency, validUntilDate, assigneeUserId (FK to User).
+Relationships: Many-to-One with ServiceScope.
+Purpose: Tracking proposals related to specific services being offered within a contract negotiation.
+License & Asset Management Entities (Phase 3):
+
+LicensePool: Your MSSP's inventory of software licenses.
+Key Fields: id (UUID), productName, vendor, licenseType (enum), totalSeats, expiryDate, costPerSeat.
+ClientLicense: Licenses assigned from a pool to a client.
+Key Fields: id (UUID), assignedSeats, assignmentDate, status.
+Relationships: Many-to-One with LicensePool, Many-to-One with Client.
+HardwareAsset: Your MSSP's hardware inventory.
+Key Fields: id (UUID), assetTag (unique), serialNumber (unique), deviceName, manufacturer, model, assetType (enum), status (enum: IN_STOCK, IN_USE, RETIRED).
+ClientHardwareAssignment: Tracks hardware assigned to clients.
+Key Fields: id (UUID), assignmentDate, returnDate, status.
+Relationships: Many-to-One with HardwareAsset, Many-to-One with Client, optional Many-to-One with ServiceScope (to link hardware to a specific contracted service).
+Financials & Team Entities (Phase 4):
+
+FinancialTransaction: Records costs and revenues.
+Key Fields: id (UUID), type (enum: REVENUE_ vs COST_), amount (decimal), currency, transactionDate, description, status (enum).
+Relationships: Optional Many-to-One links to Client, Contract, ServiceScope, LicensePool, HardwareAsset, and a User (recordedByUserId).
+ClientTeamAssignment: Links internal team members (Users) to Clients.
+Key Fields: id (UUID), assignmentRole (enum: ACCOUNT_MANAGER, LEAD_ENGINEER).
+Relationships: Many-to-One with User, Many-to-One with Client. Unique constraint on user+client+role to prevent duplicate roles.
+Dashboard & Integration Support Entities (Phase 5):
+
+SLAMetric: Tracks SLA performance (target vs. actual, breach status), linked to relevant entities.
+TicketSummary: Stores summarized ticket information (for Jira sync or manual entry), linked to clients.
+ServicePerformanceMetric: For time-series data for service-specific metrics (EDR, SIEM, NDR gauges).
+ClientSubscriptionSnapshot: Periodic snapshots for trend analysis (client counts, revenue).
+ExternalDataSource: Configuration for connecting to external REST APIs (Jira, Grafana), including URL, auth type, and encrypted credentials.
+DataSourceQuery: Specific query definitions for an ExternalDataSource, including endpoint, JQL/query template, and JSONPath for data extraction.
+Custom Fields Entity (Phase 6):
+
+CustomFieldDefinition: Stores metadata for admin-defined custom fields (entityType, name, label, fieldType, selectOptions, etc.).
+Value Storage: A customFieldData: JSONB column is added to all major operational entities (Client, Contract, Proposal, Service, ServiceScope, User, etc.) to store the values of these custom fields.
+Key Database Design Principles Applied:
+
+Normalization: Entities are generally normalized to reduce data redundancy and improve integrity, with relationships defined via foreign keys.
+UUIDs for Primary Keys: Ensures global uniqueness and avoids issues with sequential ID exposure or distributed systems.
+Enums for Controlled Vocabularies: Used extensively for statuses, types, categories, etc., to maintain data consistency and allow for clear, predefined options.
+JSONB for Flexibility: Strategically used for Service.scopeDefinitionTemplate, ServiceScope.scopeDetails, and Client.customClientSpecificJsonData (and customFieldData on other entities) to allow for dynamic, user-defined parameters and attributes without altering the core table structure frequently.
+Timestamps: createdAt and updatedAt on most entities for auditing.
+Indexing: Strategic use of indexes on foreign keys, unique constraints, and frequently queried/filtered fields (like statuses, dates, names, email) to optimize query performance.
+Relationship Management: Clear use of TypeORM decorators (@ManyToOne, @OneToMany, @JoinColumn, etc.) to define relationships, with consideration for ON DELETE behaviors (like CASCADE, RESTRICT, SET NULL) to maintain referential integrity.
+Soft Deletes & Status Lifecycles: Preference for using isActive flags or comprehensive status enums (e.g., ClientStatus, ContractStatus) to manage the lifecycle of records rather than hard deletes, preserving historical data where appropriate.
+This database design aims to provide a robust, scalable, and flexible foundation that can support all the complex features and workflows of your MSSP Client Management Platform.

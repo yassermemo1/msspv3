@@ -1,0 +1,29 @@
+Here's what to meticulously observe to confirm if the session persistence issue is resolved:
+
+During Login (POST /auth/login or equivalent):
+
+Browser Network Tab (Login Response):
+Look for the Set-Cookie header in the HTTP response from the server. It should contain your session cookie (e.g., connect.sid=... or similar) with appropriate attributes (Path=/, potentially HttpOnly).
+Browser Application Tab (Cookies):
+Verify the session cookie is present and associated with your backend's domain (e.g., localhost:3001).
+After Successful Login & Redirection (e.g., to Dashboard or the new Documents page):
+
+Browser Network Tab (for the request to /dashboard, /documents, or any subsequent protected API call):
+Crucially, inspect the Request Headers. There must be a Cookie header being sent from the browser to the server, containing the session ID you received at login.
+What is the HTTP Status Code of this request? It should be 200 OK (or another success code), not 401 Unauthorized.
+Browser Console: Check for any JavaScript errors, particularly anything related to authentication, API calls, or state management (Zustand).
+Application Behavior: Does the page load correctly? Can you access data that requires authentication?
+Further Interaction:
+
+Try navigating to another protected route or refreshing the page. Does the session persist?
+If it works:
+This means the session data is now being correctly saved to your PostgreSQL store after login, and the session cookie is being correctly sent and recognized by the backend on subsequent requests.
+
+If it still fails (you get a 401 on the next request):
+The issue might be more complex, potentially involving:
+
+How the session middleware is initialized in your NestJS application (main.ts) relative to Passport and your routes.
+The configuration of your TypeORM session store (storage.sessionStore) itself.
+Passport's session deserialization (deserializeUser function) not working as expected.
+Cookie domain/path issues (less likely on localhost but possible).
+Please go ahead with your test. I'm very interested to hear the results! Let me know what you observe in the browser's Network tab (request/response headers for login and subsequent calls) and the Application tab (cookies), as well as the overall behavior.

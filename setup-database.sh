@@ -1,0 +1,636 @@
+#!/bin/bash
+
+# MSSP Client Manager - Database Setup Script
+# Simple database setup using existing PostgreSQL installation with schema migration
+# Updated for PostgreSQL 16 support and version tracking
+
+set -e  # Exit on any error
+
+# =============================================================================
+# VERSION MANAGEMENT
+# =============================================================================
+SCRIPT_VERSION="1.6.0"        # Should match package.json version
+REQUIRED_APP_VERSION="1.6.0"  # Minimum app version required
+DB_SCHEMA_VERSION="1.6.0"     # Database schema version - Entity Relations System
+
+# PostgreSQL 16 specific paths for RedHat
+export PATH=/opt/postgresql/16/bin:/usr/pgsql-16/bin:$PATH
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+NC='\033[0m' # No Color
+
+# Configuration - Auto-detect environment and use appropriate credentials
+DB_NAME="mssp_production"
+DB_USER="mssp_user"
+
+# Password configuration - Standardized for both environments
+DEV_PASSWORD="devpass123"      # Development password (macOS) - Updated for security
+PROD_PASSWORD="12345678"       # Production password (RedHat)
+
+# Auto-detect environment and set appropriate password
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS - Development environment
+    DB_PASSWORD="$DEV_PASSWORD"
+    ENVIRONMENT="development"
+else
+    # Linux/RedHat - Production environment  
+    DB_PASSWORD="$PROD_PASSWORD"
+    ENVIRONMENT="production"
+fi
+
+# Logging functions
+log() {
+    echo -e "${GREEN}[$(date +'%H:%M:%S')] $1${NC}"
+}
+
+error() {
+    echo -e "${RED}[ERROR] $1${NC}"
+}
+
+warning() {
+    echo -e "${YELLOW}[WARNING] $1${NC}"
+}
+
+info() {
+    echo -e "${BLUE}[INFO] $1${NC}"
+}
+
+version_info() {
+    echo -e "${PURPLE}[VERSION] $1${NC}"
+}
+
+# =============================================================================
+# VERSION CHECKING FUNCTIONS
+# =============================================================================
+
+# Check and sync application version
+check_app_version() {
+    version_info "Checking application version compatibility..."
+    
+    # Look for package.json in current directory or common locations
+    PACKAGE_JSON=""
+    for location in "." "./package.json" "~/MsspClientManager/package.json" "../package.json"; do
+        if [ -f "$location/package.json" ]; then
+            PACKAGE_JSON="$location/package.json"
+            break
+        elif [ -f "$location" ]; then
+            PACKAGE_JSON="$location"
+            break
+        fi
+    done
+    
+    if [ -n "$PACKAGE_JSON" ]; then
+        # Extract version from package.json
+        APP_VERSION=$(grep '"version":' "$PACKAGE_JSON" | sed 's/.*"version": *"\([^"]*\)".*/\1/')
+        version_info "Found application version: $APP_VERSION"
+        
+        # Check if versions match
+        if [ "$APP_VERSION" = "$SCRIPT_VERSION" ]; then
+            version_info "✅ Script version ($SCRIPT_VERSION) matches app version ($APP_VERSION)"
+        else
+            warning "⚠️  Version mismatch detected!"
+            warning "   Script version: $SCRIPT_VERSION"
+            warning "   App version: $APP_VERSION"
+            warning "   Consider updating the database setup script"
+        fi
+    else
+        warning "package.json not found. Unable to verify version compatibility."
+        warning "Expected app version: $REQUIRED_APP_VERSION"
+    fi
+    
+    version_info "Database schema version: $DB_SCHEMA_VERSION"
+}
+
+# Save version information to database
+save_version_info() {
+    log "Saving version information to database..."
+    
+    source ~/.mssp_db_config
+    
+    # Create or update schema_versions table
+    PGPASSWORD="$DB_PASSWORD" $PSQL_CMD -h localhost -U $DB_USER -d $DB_NAME -c "
+    CREATE TABLE IF NOT EXISTS schema_versions (
+        id SERIAL PRIMARY KEY,
+        script_version VARCHAR(20) NOT NULL,
+        app_version VARCHAR(20),
+        schema_version VARCHAR(20) NOT NULL,
+        applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        environment VARCHAR(20),
+        notes TEXT
+    );" >/dev/null 2>&1 || warning "Could not create schema_versions table"
+    
+    # Insert current version info
+    PGPASSWORD="$DB_PASSWORD" $PSQL_CMD -h localhost -U $DB_USER -d $DB_NAME -c "
+    INSERT INTO schema_versions (script_version, app_version, schema_version, environment, notes) 
+    VALUES ('$SCRIPT_VERSION', '$APP_VERSION', '$DB_SCHEMA_VERSION', '$ENVIRONMENT', 'Database setup completed successfully')
+    ON CONFLICT DO NOTHING;" >/dev/null 2>&1 || warning "Could not save version information"
+    
+    info "Version information saved to database"
+}
+
+# Check existing schema version
+check_existing_schema_version() {
+    log "Checking existing database schema version..."
+    
+    source ~/.mssp_db_config
+    
+    # Check if schema_versions table exists and get latest version
+    EXISTING_VERSION=$(PGPASSWORD="$DB_PASSWORD" $PSQL_CMD -h localhost -U $DB_USER -d $DB_NAME -tAc "
+    SELECT schema_version FROM schema_versions ORDER BY applied_at DESC LIMIT 1;" 2>/dev/null || echo "")
+    
+    if [ -n "$EXISTING_VERSION" ]; then
+        version_info "Existing schema version: $EXISTING_VERSION"
+        if [ "$EXISTING_VERSION" = "$DB_SCHEMA_VERSION" ]; then
+            version_info "✅ Schema is up to date"
+        else
+            version_info "📦 Schema update available: $EXISTING_VERSION → $DB_SCHEMA_VERSION"
+        fi
+    else
+        version_info "No existing schema version found (fresh installation)"
+    fi
+}
+
+# Generate secure password
+generate_password() {
+    openssl rand -base64 32 | tr -d "=+/" | cut -c1-25
+}
+
+# Find PostgreSQL installation
+find_postgresql() {
+    log "Detecting existing PostgreSQL installation..."
+    
+    # Check for different PostgreSQL versions and services
+    PSQL_CMD=""
+    PG_SERVICE=""
+    
+    # Try PostgreSQL 16 first (user's version)
+    if [ -f "/usr/pgsql-16/bin/psql" ]; then
+        PSQL_CMD="/usr/pgsql-16/bin/psql"
+        CREATEDB_CMD="/usr/pgsql-16/bin/createdb"
+        PG_SERVICE="postgresql-16"
+        PG_VERSION="16"
+        info "Found PostgreSQL 16 at: /usr/pgsql-16/bin"
+    elif [ -f "/opt/postgresql/16/bin/psql" ]; then
+        PSQL_CMD="/opt/postgresql/16/bin/psql"
+        CREATEDB_CMD="/opt/postgresql/16/bin/createdb"
+        PG_SERVICE="postgresql-16"
+        PG_VERSION="16"
+        info "Found PostgreSQL 16 at: /opt/postgresql/16/bin"
+    fi
+    
+    # Fallback: Try other PostgreSQL versions
+    if [ -z "$PSQL_CMD" ]; then
+        for version in 15 14 13 12 11 10; do
+            if command -v /usr/pgsql-${version}/bin/psql >/dev/null 2>&1; then
+                PSQL_CMD="/usr/pgsql-${version}/bin/psql"
+                CREATEDB_CMD="/usr/pgsql-${version}/bin/createdb"
+                PG_SERVICE="postgresql-${version}"
+                PG_VERSION=$version
+                break
+            fi
+        done
+    fi
+    
+    # Try system psql as last resort
+    if [ -z "$PSQL_CMD" ] && command -v psql >/dev/null 2>&1; then
+        PSQL_CMD="psql"
+        CREATEDB_CMD="createdb"
+        PG_SERVICE="postgresql"
+        PG_VERSION="system"
+    fi
+    
+    if [ -z "$PSQL_CMD" ]; then
+        error "PostgreSQL not found. Please install PostgreSQL first."
+        echo "For PostgreSQL 16 on RedHat, run:"
+        echo "sudo dnf install postgresql16-server postgresql16"
+        exit 1
+    fi
+    
+    info "Found PostgreSQL $PG_VERSION at: $PSQL_CMD"
+    info "Service: $PG_SERVICE"
+}
+
+# Check PostgreSQL service
+check_postgresql_service() {
+    log "Checking PostgreSQL service status..."
+    
+    # Check if service is running
+    if sudo systemctl is-active $PG_SERVICE >/dev/null 2>&1; then
+        info "PostgreSQL service is running"
+    else
+        log "Starting PostgreSQL service..."
+        sudo systemctl start $PG_SERVICE || {
+            error "Failed to start PostgreSQL service"
+            error "You might need to initialize the database first:"
+            if [ "$PG_VERSION" = "16" ]; then
+                error "sudo /usr/pgsql-16/bin/postgresql-16-setup initdb"
+            else
+                error "sudo postgresql-setup --initdb"
+            fi
+            exit 1
+        }
+    fi
+    
+    # Enable service if not enabled
+    if ! sudo systemctl is-enabled $PG_SERVICE >/dev/null 2>&1; then
+        log "Enabling PostgreSQL service..."
+        sudo systemctl enable $PG_SERVICE
+    fi
+    
+    log "PostgreSQL service is ready"
+}
+
+# Check if database exists
+check_database_exists() {
+    log "Checking if database exists..."
+    
+    # Check if database exists
+    if sudo -u postgres $PSQL_CMD -lqt | cut -d \| -f 1 | grep -qw $DB_NAME; then
+        info "Database '$DB_NAME' already exists"
+        DB_EXISTS=true
+    else
+        info "Database '$DB_NAME' does not exist"
+        DB_EXISTS=false
+    fi
+    
+    # Check if user exists
+    if sudo -u postgres $PSQL_CMD -tAc "SELECT 1 FROM pg_roles WHERE rolname='$DB_USER'" | grep -q 1; then
+        info "User '$DB_USER' already exists"
+        USER_EXISTS=true
+    else
+        info "User '$DB_USER' does not exist"
+        USER_EXISTS=false
+    fi
+}
+
+# Setup database and user (only if needed)
+setup_database() {
+    log "Setting up database and user..."
+    log "Environment detected: $ENVIRONMENT"
+    log "Using password: $DB_PASSWORD"
+    
+    # Create database if it doesn't exist
+    if [ "$DB_EXISTS" = false ]; then
+        log "Creating database '$DB_NAME'..."
+        if [ -n "$CREATEDB_CMD" ]; then
+            sudo -u postgres $CREATEDB_CMD $DB_NAME
+        else
+            sudo -u postgres $PSQL_CMD -c "CREATE DATABASE $DB_NAME;"
+        fi
+        log "Database created successfully"
+    fi
+    
+    # Create user if it doesn't exist
+    if [ "$USER_EXISTS" = false ]; then
+        log "Creating user '$DB_USER'..."
+        sudo -u postgres $PSQL_CMD -c "CREATE USER $DB_USER WITH ENCRYPTED PASSWORD '$DB_PASSWORD';"
+        log "User created successfully"
+    else
+        # Update password for existing user
+        log "Updating password for existing user '$DB_USER'..."
+        sudo -u postgres $PSQL_CMD -c "ALTER USER $DB_USER WITH ENCRYPTED PASSWORD '$DB_PASSWORD';"
+    fi
+    
+    # Grant privileges
+    log "Granting privileges..."
+    sudo -u postgres $PSQL_CMD -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
+    sudo -u postgres $PSQL_CMD -c "ALTER USER $DB_USER CREATEDB;"
+    sudo -u postgres $PSQL_CMD -c "ALTER DATABASE $DB_NAME OWNER TO $DB_USER;"
+    
+    # Connect to database and grant schema permissions (PostgreSQL 15+ requirement)
+    log "Granting schema permissions..."
+    sudo -u postgres $PSQL_CMD -d $DB_NAME -c "GRANT ALL ON SCHEMA public TO $DB_USER;"
+    sudo -u postgres $PSQL_CMD -d $DB_NAME -c "GRANT CREATE ON SCHEMA public TO $DB_USER;"
+    sudo -u postgres $PSQL_CMD -d $DB_NAME -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO $DB_USER;"
+    sudo -u postgres $PSQL_CMD -d $DB_NAME -c "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO $DB_USER;"
+    
+    log "Database and user setup completed"
+    info "Database: $DB_NAME"
+    info "User: $DB_USER" 
+    info "Password: $DB_PASSWORD"
+    
+    # Save credentials to file for other scripts
+    echo "DB_NAME=$DB_NAME" > ~/.mssp_db_config
+    echo "DB_USER=$DB_USER" >> ~/.mssp_db_config
+    echo "DB_PASSWORD=$DB_PASSWORD" >> ~/.mssp_db_config
+    echo "PG_SERVICE=$PG_SERVICE" >> ~/.mssp_db_config
+    echo "PSQL_CMD=$PSQL_CMD" >> ~/.mssp_db_config
+    
+    log "Database credentials saved to ~/.mssp_db_config"
+}
+
+# Check if schema exists and is current
+check_schema() {
+    log "Checking database schema..."
+    
+    # Load credentials
+    source ~/.mssp_db_config
+    
+    # Check if the main tables exist
+    ESSENTIAL_TABLES=(
+        "users"
+        "clients" 
+        "contracts"
+        "services"
+        "service_scopes"
+        "proposals"
+        "hardware_assets"
+        "financial_transactions"
+        "audit_logs"
+        "change_history"
+        "documents"
+        "company_settings"
+    )
+    
+    SCHEMA_COMPLETE=true
+    MISSING_TABLES=()
+    
+    for table in "${ESSENTIAL_TABLES[@]}"; do
+        table_exists=$(PGPASSWORD="$DB_PASSWORD" $PSQL_CMD -h localhost -U $DB_USER -d $DB_NAME -tAc "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = '$table'" 2>/dev/null || echo "0")
+        
+        if [ "$table_exists" -eq 0 ]; then
+            MISSING_TABLES+=("$table")
+            SCHEMA_COMPLETE=false
+        fi
+    done
+    
+    if [ "$SCHEMA_COMPLETE" = true ]; then
+        info "✅ All essential database tables exist"
+        TOTAL_TABLES=$(PGPASSWORD="$DB_PASSWORD" $PSQL_CMD -h localhost -U $DB_USER -d $DB_NAME -tAc "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public'" 2>/dev/null || echo "0")
+        info "Total tables in database: $TOTAL_TABLES"
+    else
+        warning "❌ Missing database tables: ${MISSING_TABLES[*]}"
+        info "Schema migration is required"
+    fi
+}
+
+# Apply database migrations
+apply_migrations() {
+    log "Applying database migrations..."
+    
+    # Change to application directory if it exists
+    if [ -d ~/MsspClientManager ]; then
+        cd ~/MsspClientManager
+        info "Changed to application directory: ~/MsspClientManager"
+    else
+        warning "Application directory not found. Using current directory."
+    fi
+    
+    # Check if migration files exist
+    if [ ! -d "migrations" ]; then
+        error "Migrations directory not found! Please ensure you have the application code."
+        return 1
+    fi
+    
+    # Apply SQL migrations manually in order
+    log "Applying SQL migrations in sequence..."
+    
+    SQL_MIGRATIONS=(
+        "0000_typical_longshot.sql"
+        "0000_magenta_hellion.sql"
+        "0001_absent_beast.sql"
+        "0001_warm_mathemanic.sql"
+        "0002_bouncy_rick_jones.sql"
+        "0003_fix_documents_column.sql"
+        "0004_enhance_audit_system.sql"
+        "0005_fix_documents_schema_mismatch.sql"
+        "0006_cleanup_all_data.sql"
+        "0007_simple_cleanup.sql"
+        "0007_add_soft_deletion.sql"
+        "add-ldap-settings.sql"
+        "add-data-sources-fields.sql"
+    )
+    
+    # Load database credentials
+    source ~/.mssp_db_config
+    
+    for migration in "${SQL_MIGRATIONS[@]}"; do
+        if [ -f "migrations/$migration" ]; then
+            log "Applying migration: $migration"
+            if PGPASSWORD="$DB_PASSWORD" $PSQL_CMD -h localhost -U $DB_USER -d $DB_NAME -f "migrations/$migration" >/dev/null 2>&1; then
+                info "✅ Applied: $migration"
+            else
+                warning "⚠️  Migration $migration failed or already applied"
+            fi
+        else
+            info "Migration file not found: $migration (skipping)"
+        fi
+    done
+    
+    log "SQL migrations processing completed"
+    
+    # Try to run Drizzle migrations if available
+    if [ -f "package.json" ] && [ -f "drizzle.config.ts" ]; then
+        log "Running Drizzle schema push..."
+        
+        # Install dependencies if needed
+        if [ ! -d "node_modules" ]; then
+            log "Installing Node.js dependencies..."
+            npm install >/dev/null 2>&1 || warning "Failed to install dependencies"
+        fi
+        
+        # Set DATABASE_URL environment variable
+        export DATABASE_URL="postgresql://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME"
+        
+        # Run Drizzle schema push instead of migrate
+        if npx drizzle-kit push --force >/dev/null 2>&1; then
+            info "✅ Drizzle schema push completed successfully"
+        else
+            warning "⚠️  Drizzle schema push failed or not needed"
+        fi
+    else
+        info "Drizzle config not found, skipping Drizzle schema push"
+    fi
+}
+
+# Test database connection
+test_connection() {
+    log "Testing database connection..."
+    
+    # Load credentials
+    source ~/.mssp_db_config
+    
+    # Test connection
+    if PGPASSWORD="$DB_PASSWORD" $PSQL_CMD -h localhost -U $DB_USER -d $DB_NAME -c "SELECT version();" >/dev/null 2>&1; then
+        log "✅ Database connection test passed!"
+    else
+        error "❌ Database connection test failed!"
+        info "Trying to configure authentication..."
+        configure_auth_if_needed
+        
+        # Test again
+        if PGPASSWORD="$DB_PASSWORD" $PSQL_CMD -h localhost -U $DB_USER -d $DB_NAME -c "SELECT version();" >/dev/null 2>&1; then
+            log "✅ Database connection test passed after auth configuration!"
+        else
+            error "❌ Database connection still failed. Manual configuration may be needed."
+            info "Try running: sudo -u postgres psql"
+            exit 1
+        fi
+    fi
+}
+
+# Configure authentication if needed
+configure_auth_if_needed() {
+    log "Configuring PostgreSQL authentication if needed..."
+    
+    # Find pg_hba.conf
+    PG_HBA=""
+    for conf in /var/lib/pgsql/*/data/pg_hba.conf /etc/postgresql/*/main/pg_hba.conf; do
+        if [ -f "$conf" ]; then
+            PG_HBA="$conf"
+            break
+        fi
+    done
+    
+    if [ -z "$PG_HBA" ]; then
+        warning "Could not find pg_hba.conf file"
+        return
+    fi
+    
+    info "Found pg_hba.conf at: $PG_HBA"
+    
+    # Check if our rules already exist
+    if sudo grep -q "# MSSP Client Manager Authentication" "$PG_HBA"; then
+        info "Authentication rules already exist"
+        return
+    fi
+    
+    # Backup original config
+    sudo cp "$PG_HBA" "$PG_HBA.backup.$(date +%Y%m%d_%H%M%S)"
+    
+    # Add authentication rules
+    sudo bash -c "cat >> $PG_HBA << EOF
+
+# MSSP Client Manager Authentication
+host    $DB_NAME    $DB_USER    127.0.0.1/32    md5
+host    $DB_NAME    $DB_USER    ::1/128         md5
+local   $DB_NAME    $DB_USER                    md5
+EOF"
+    
+    log "Authentication rules added"
+    
+    # Restart PostgreSQL
+    log "Restarting PostgreSQL to apply authentication changes..."
+    sudo systemctl restart $PG_SERVICE
+    sleep 3
+    
+    log "PostgreSQL authentication configured"
+}
+
+# Verify final schema
+verify_final_schema() {
+    log "Verifying final database schema..."
+    
+    source ~/.mssp_db_config
+    
+    # Count total tables
+    TOTAL_TABLES=$(PGPASSWORD="$DB_PASSWORD" $PSQL_CMD -h localhost -U $DB_USER -d $DB_NAME -tAc "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public'" 2>/dev/null || echo "0")
+    
+    if [ "$TOTAL_TABLES" -gt 20 ]; then
+        info "✅ Database schema looks complete ($TOTAL_TABLES tables)"
+    else
+        warning "⚠️  Database has only $TOTAL_TABLES tables. Some migrations may have failed."
+    fi
+    
+    # Check for key tables
+    KEY_TABLES=("users" "clients" "contracts" "audit_logs" "company_settings")
+    ALL_KEY_TABLES_EXIST=true
+    
+    for table in "${KEY_TABLES[@]}"; do
+        table_exists=$(PGPASSWORD="$DB_PASSWORD" $PSQL_CMD -h localhost -U $DB_USER -d $DB_NAME -tAc "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = '$table'" 2>/dev/null || echo "0")
+        
+        if [ "$table_exists" -eq 0 ]; then
+            warning "❌ Key table missing: $table"
+            ALL_KEY_TABLES_EXIST=false
+        else
+            info "✅ Found: $table"
+        fi
+    done
+    
+    if [ "$ALL_KEY_TABLES_EXIST" = true ]; then
+        log "🎉 All key database tables are present!"
+    else
+        warning "Some key tables are missing. Database may need manual setup."
+    fi
+}
+
+# Main function
+main() {
+    echo "=============================================="
+    echo "🗄️  MSSP Client Manager - Database Setup v$SCRIPT_VERSION"
+    echo "=============================================="
+    echo ""
+    
+    # Version compatibility check
+    check_app_version
+    echo ""
+    
+    echo "This script will:"
+    echo "- Detect existing PostgreSQL installation"
+    echo "- Check existing database and user"
+    echo "- Create only what's missing"
+    echo "- Apply database schema migrations"
+    echo "- Configure authentication if needed"
+    echo "- Track version information"
+    echo ""
+    read -p "Continue? (y/N): " confirm
+    
+    if [[ ! $confirm =~ ^[Yy]$ ]]; then
+        echo "Setup cancelled."
+        exit 0
+    fi
+    
+    # Run setup steps
+    find_postgresql
+    check_postgresql_service
+    check_database_exists
+    setup_database
+    test_connection
+    check_existing_schema_version
+    check_schema
+    
+    # Apply migrations if schema is incomplete
+    if [ "$SCHEMA_COMPLETE" = false ]; then
+        log "Applying database migrations to complete schema..."
+        apply_migrations
+        check_schema
+    else
+        info "Database schema is already complete, skipping migrations"
+    fi
+    
+    verify_final_schema
+    save_version_info
+    
+    echo ""
+    echo "🎉 Database setup completed successfully!"
+    echo ""
+    echo "📋 Database Information:"
+    source ~/.mssp_db_config
+    echo "  Database: $DB_NAME"
+    echo "  User: $DB_USER"
+    echo "  Password: $DB_PASSWORD"
+    echo "  PostgreSQL Version: $PG_VERSION"
+    echo "  Environment: $ENVIRONMENT"
+    echo ""
+    echo "📦 Version Information:"
+    echo "  Setup Script: $SCRIPT_VERSION"
+    echo "  App Version: ${APP_VERSION:-'Not detected'}"
+    echo "  Schema Version: $DB_SCHEMA_VERSION"
+    echo "  Applied: $(date +'%Y-%m-%d %H:%M:%S')"
+    echo ""
+    echo "🔗 Connection String:"
+    echo "  postgresql://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME"
+    echo ""
+    echo "💾 Credentials saved to: ~/.mssp_db_config"
+    echo "📊 Version tracking: schema_versions table in database"
+    echo ""
+    echo "▶️  Next step: Run ./setup-application.sh"
+}
+
+# Run main function
+main "$@" 

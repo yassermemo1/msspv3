@@ -1,0 +1,16 @@
+name,category,description,deliveryModel,basePrice,pricingUnit,isActive
+24/7 SOC Monitoring,Security Operations,Continuous security monitoring and incident response,Serverless,5000.00,per month,true
+Vulnerability Assessment,Network Security,Quarterly vulnerability scans and reporting,On-Prem Engineer,2500.00,per quarter,true
+Penetration Testing,Network Security,Annual comprehensive penetration testing,Hybrid,15000.00,per assessment,true
+Compliance Audit,Compliance,SOC2 and ISO27001 compliance auditing,On-Prem Engineer,8000.00,per audit,true
+Incident Response,Security Operations,Emergency security incident response,Serverless,1000.00,per incident,true
+Security Awareness Training,Training,Employee security awareness training program,Serverless,50.00,per employee,true
+Endpoint Protection,Endpoint Security,Advanced endpoint detection and response,Serverless,25.00,per endpoint,true
+Network Segmentation,Network Security,Network security architecture and segmentation,On-Prem Engineer,20000.00,per project,true
+SIEM Implementation,Security Operations,Security information and event management setup,Hybrid,35000.00,per implementation,true
+Dark Web Monitoring,Threat Intelligence,Continuous dark web monitoring for data breaches,Serverless,500.00,per month,true
+Cloud Security Assessment,Cloud Security,Comprehensive cloud security posture assessment,Hybrid,10000.00,per assessment,true
+Identity Management,Identity Security,Identity and access management implementation,On-Prem Engineer,25000.00,per implementation,true
+Security Policy Development,Consulting,Custom security policy and procedure development,On-Prem Engineer,150.00,per hour,true
+Firewall Management,Network Security,Managed firewall configuration and monitoring,Serverless,2000.00,per month,true
+Data Loss Prevention,Data Protection,DLP solution implementation and management,Hybrid,15000.00,per implementation,true 

@@ -1,0 +1,2083 @@
+{
+  "crawlDate": "2025-06-06T18:50:36.862Z",
+  "totalUrls": 33,
+  "summary": {
+    "success": 33,
+    "clientErrors": 0,
+    "serverErrors": 0,
+    "noResponse": 0,
+    "pagesWithContent": 33,
+    "pagesWithoutContent": 0,
+    "pagesWithJsErrors": 0,
+    "pagesWithHttpErrors": 0,
+    "totalButtons": 327,
+    "buttonsWithHandlers": 283,
+    "totalForms": 0
+  },
+  "results": [
+    {
+      "url": "http://localhost:5001/",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:10.756Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 789,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "Refresh",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Filters",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "Refresh",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Customize Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Refresh Pools",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "View All Pools",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Manage License Pools",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/admin",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:56.597Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/admin/roles",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:04.649Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/admin/services",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:59.279Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/admin/users",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:01.951Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 476,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/assets",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:18.051Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 589,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Add Hardware",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "Add License Pool",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "Hardware Assets",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "License Pools",
+          "hasHandler": false,
+          "type": "button"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/audit-logs",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:26.110Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/clients",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:16.173Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 721,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Active Clients (3)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Archived Clients (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Filters",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "Add Client",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "Columns (10)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/clients/1",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:21.569Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 943,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Back to Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Edit Client",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Proposals (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Services (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Licenses (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Individual Licenses (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Assets (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "SAFs (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "COCs (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Documents (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Transactions (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Team Assignments",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "History",
+          "hasHandler": false,
+          "type": "button"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/clients/2",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:24.273Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 945,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Back to Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Edit Client",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Proposals (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Services (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Licenses (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Individual Licenses (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Assets (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "SAFs (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "COCs (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Documents (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Transactions (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Team Assignments",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "History",
+          "hasHandler": false,
+          "type": "button"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/clients/3",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:26.973Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 952,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Back to Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Edit Client",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Proposals (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Services (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Licenses (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Individual Licenses (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Assets (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "SAFs (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "COCs (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Documents (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Transactions (0)",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "Team Assignments",
+          "hasHandler": false,
+          "type": "button"
+        },
+        {
+          "text": "History",
+          "hasHandler": false,
+          "type": "button"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/clients/new",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:18.866Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 75,
+      "buttons": [
+        {
+          "text": "Back to Clients",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/coc",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:45.853Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/contracts",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:35.072Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 468,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Add Contract",
+          "hasHandler": true,
+          "type": "button"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/dashboard",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:13.466Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/external-systems",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:23.419Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 465,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Add System",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/hardware",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:40.444Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/integrations",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:20.730Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/licenses",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:37.765Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/profile",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:28.827Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/reports",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:07.339Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 938,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Export",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Export",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Export",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Export",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Export",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Export",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Export",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Export",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Export",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/reports/clients",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:10.011Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/reports/financial",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:15.378Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/reports/services",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:12.697Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/saf",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:43.133Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/services",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:29.675Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 929,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Add Service",
+          "hasHandler": true,
+          "type": "button"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/services/new",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:32.366Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/settings",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:53.920Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 473,
+      "buttons": [
+        {
+          "text": "Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Clients",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Contracts",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Services",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Licenses",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Hardware",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "SAF",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "COC",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Reports",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Admin",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "External Systems",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Audit Logs",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Advanced",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/settings/company",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:31.494Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/settings/notifications",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:36.862Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/settings/security",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:50:34.177Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/users",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:48.548Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    },
+    {
+      "url": "http://localhost:5001/users/new",
+      "status": 200,
+      "statusText": "OK",
+      "timestamp": "2025-06-06T18:49:51.248Z",
+      "jsErrors": [],
+      "httpErrors": [],
+      "hasContent": true,
+      "contentLength": 283,
+      "buttons": [
+        {
+          "text": "Go Back",
+          "hasHandler": true,
+          "type": "submit"
+        },
+        {
+          "text": "Go to Dashboard",
+          "hasHandler": true,
+          "type": "submit"
+        }
+      ],
+      "forms": []
+    }
+  ]
+}

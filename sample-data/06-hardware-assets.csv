@@ -1,0 +1,16 @@
+name,category,manufacturer,model,serialNumber,purchaseDate,purchaseCost,warrantyExpiry,status,location,notes
+Palo Alto Firewall PA-3220,Firewall,Palo Alto Networks,PA-3220,PA3220-001-2024,2024-01-15,8500.00,2027-01-15,active,Data Center A,Primary firewall for TechCorp deployment
+Cisco ASA 5516-X,Firewall,Cisco,ASA 5516-X,FPR2K-001-2024,2024-02-01,4200.00,2026-02-01,active,Data Center B,Secondary firewall for redundancy
+Dell PowerEdge R740,Server,Dell,PowerEdge R740,PE-R740-001,2024-01-10,12000.00,2027-01-10,active,Data Center A,SIEM server for log aggregation
+HPE ProLiant DL380,Server,HPE,ProLiant DL380 Gen10,HPE-DL380-001,2024-03-05,15000.00,2027-03-05,active,Data Center B,Backup and recovery server
+Fortinet FortiGate 600E,Firewall,Fortinet,FortiGate 600E,FG600E-001-2024,2024-02-20,6800.00,2026-02-20,active,Client Site - HealthFirst,On-premise firewall deployment
+Juniper SRX4600,Firewall,Juniper,SRX4600,SRX4600-001-2024,2024-04-01,18000.00,2027-04-01,active,Data Center A,High-performance security gateway
+IBM Security QRadar,Security Appliance,IBM,QRadar 3129,QR3129-001-2024,2024-03-15,25000.00,2027-03-15,active,Data Center B,SIEM appliance for enterprise clients
+F5 BIG-IP i4800,Load Balancer,F5,BIG-IP i4800,F5-4800-001-2024,2024-05-01,22000.00,2027-05-01,active,Data Center A,Application delivery controller
+Check Point 15600,Firewall,Check Point,15600 Appliance,CP15600-001-2024,2024-01-25,12500.00,2026-01-25,active,Client Site - Global Finance,Enterprise security gateway
+SonicWall NSA 6650,Firewall,SonicWall,NSA 6650,SW6650-001-2024,2024-06-10,3500.00,2026-06-10,active,Client Site - RetailMax,Mid-range security appliance
+Aruba ClearPass C2000,NAC Appliance,Aruba,ClearPass C2000,ACP2000-001-2024,2024-04-15,8000.00,2026-04-15,active,Data Center B,Network access control system
+Splunk Search Head SH1,Server,Dell,PowerEdge R640,PE-R640-SPL001,2024-02-10,9500.00,2027-02-10,active,Data Center A,Splunk search head cluster node
+CrowdStrike Falcon Sensor Box,Security Appliance,CrowdStrike,Falcon X,FX-001-2024,2024-03-20,15000.00,2026-03-20,active,Data Center B,Endpoint protection management
+Trend Micro Deep Discovery,Security Appliance,Trend Micro,Deep Discovery Inspector,TM-DDI-001-2024,2024-05-15,18500.00,2026-05-15,active,Data Center A,Advanced threat detection appliance
+Cisco Catalyst 9300,Switch,Cisco,Catalyst 9300-48U,C9300-48U-001,2024-01-30,4500.00,2026-01-30,active,Data Center A,Core network switch 

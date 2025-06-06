@@ -1,0 +1,60 @@
+et's paint a picture of the MSSP Client Management Platform we are building, based on all the features and design choices we've discussed in our "fresh start" approach.
+
+App Description: MSSP Client Management Platform
+
+Core Purpose:
+The MSSP Client Management Platform is a comprehensive, centralized software solution designed specifically for Managed Security Service Providers (MSSPs) to streamline their operations, enhance client relationship management, and gain clear visibility into all aspects of service delivery and business performance. It aims to be the single source of truth for managing the entire client lifecycle and the services provided to them.
+
+Target Users (within the MSSP):
+
+Managers & Executives: For oversight, dashboards, reporting, and strategic decision-making.
+Account Managers & Sales: For managing client relationships, contracts, proposals, and renewals.
+Project Managers & Service Delivery Teams: For tracking service scopes, activations (SAFs), assigned assets, and team allocations per client.
+Engineers: For accessing relevant client and service information.
+Finance/Admin Staff: For tracking basic financial transactions and managing licenses/assets.
+System Administrators: For configuring the platform, managing users, and defining services or custom fields.
+Key Features & Capabilities:
+
+Comprehensive Client Management:
+
+Detailed client profiles (company info, multiple contacts, industry, size, status, source).
+Lifecycle tracking from prospect to active, renewal, or archived.
+(Future via Custom Fields) Ability to add any other specific client data an admin defines.
+Dynamic Service Catalog & Scope Definition:
+
+A centralized catalog of all services offered by the MSSP (e.g., MDR variants, Managed Firewall, SIEM, VA, PAM).
+Services defined with categories, delivery models (Serverless, On-Prem Engineer, etc.), and base pricing.
+Unique Feature: Administrators can define dynamic "Scope Definition Templates" for each service, specifying what parameters (e.g., "Number of Endpoints," "EDR Platform Choice," "EPS Target") and options are required when that service is added to a contract.
+End-to-End Contract Lifecycle Management:
+
+Creation and management of client contracts, linked to clients, with clear start/end dates, renewal information, contract values, and document attachments.
+Ability to add multiple services to a single contract.
+For each service in a contract (a ServiceScope):
+Dynamic forms (based on the service's scopeDefinitionTemplate) to capture specific scope details (e.g., 500 EDR endpoints using "CarbonBlack").
+Tracking of Service Activation Form (SAF) details: document link, SAF-specific service start/end dates, and status.
+Management of associated technical and financial proposals (document links, versions, statuses, proposed values).
+Integrated Asset Management:
+
+Software License Management: Tracking of LicensePools (licenses owned/managed by the MSSP) and assignment of those licenses (ClientLicense) to clients, with seat availability checks.
+Hardware Inventory & Assignment: Managing a catalog of HardwareAssets and tracking their assignment to clients (ClientHardwareAssignment), optionally linked to specific contracted services (ServiceScopes). Includes asset status updates based on assignment lifecycle.
+Financial Tracking (Initial):
+
+Recording of basic FinancialTransactions (costs and revenues) linked to clients, contracts, services, licenses, or hardware, providing a foundational layer for financial oversight.
+Team Assignment & Collaboration:
+
+Assigning internal team members (Users) to Clients with specific roles for that engagement (e.g., Account Manager, Lead Engineer, Project Manager).
+Insightful Dashboards & Reporting (Phase 5 Vision):
+
+A main operational dashboard providing key metrics on SLA performance, ticket statuses, service health (e.g., EDR/SIEM/NDR gauges), customer subscription trends, and upcoming contract/SAF expirations.
+A comprehensive "Client Home Page / 360 View" aggregating all relevant information for a specific client in one place.
+Drill-down capabilities on all dashboard elements to view underlying data.
+Jira Data Center Integration: Real-time fetching of ticket and SLA data to be displayed on dashboards.
+Basic CSV export capabilities for key data sets.
+Dynamic External Data Source Framework: A powerful backend system allowing admins to configure connections to various external REST APIs to pull in additional data for dashboards or other uses.
+Platform Extensibility & Security:
+
+Dynamic Custom Fields: Administrators can define and add custom data fields to major entities (Clients, Contracts, Proposals, etc.) without requiring new code, making the platform highly adaptable.
+Secure Authentication & Authorization: Robust user registration and login using JWTs, with password hashing (bcrypt). Comprehensive Role-Based Access Control (RBAC) protects all APIs and influences UI visibility. Designed for future LDAP extensibility.
+Modern Technology Stack: NestJS backend for scalability and robustness; React 18/Vite/Tailwind CSS/Zustand frontend for a fast, modern, and maintainable user interface.
+Overall Vision:
+The MSSP Client Management Platform aims to be an indispensable tool for your organization, centralizing critical operational data, automating workflows, enhancing client service, and providing the insights needed to manage and grow your MSSP business effectively. The "fresh start" approach with a modern stack and clear, phased development is designed to build this vision "perfectly" and address previous challenges.

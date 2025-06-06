@@ -1,0 +1,11 @@
+username,email,firstName,lastName,role,isActive,password
+admin,admin@mssp.com,Admin,User,admin,true,admin123
+jsmith,john.smith@mssp.com,John,Smith,manager,true,password123
+mwilson,mary.wilson@mssp.com,Mary,Wilson,engineer,true,password123
+djohnson,david.johnson@mssp.com,David,Johnson,engineer,true,password123
+sbrown,sarah.brown@mssp.com,Sarah,Brown,analyst,true,password123
+rgarcia,robert.garcia@mssp.com,Robert,Garcia,engineer,true,password123
+lmiller,lisa.miller@mssp.com,Lisa,Miller,manager,true,password123
+kdavis,kevin.davis@mssp.com,Kevin,Davis,engineer,true,password123
+awilliams,amy.williams@mssp.com,Amy,Williams,analyst,true,password123
+tmoore,thomas.moore@mssp.com,Thomas,Moore,engineer,true,password123 

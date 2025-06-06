@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1748759880021,
+      "tag": "0000_typical_longshot",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1748759945923,
+      "tag": "0001_warm_mathemanic",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1748890152996,
+      "tag": "0002_clear_patriot",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1748895947866,
+      "tag": "0003_add_user_dashboard_settings",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1748899179270,
+      "tag": "0004_true_luke_cage",
+      "breakpoints": true
+    }
+  ]
+}

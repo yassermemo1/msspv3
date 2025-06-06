@@ -1,0 +1,512 @@
+{
+  "info": {
+    "name": "MSSP Client Manager API Tests",
+    "description": "Comprehensive API testing collection for MSSP Client Management System",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{authToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Global pre-request script",
+          "pm.request.headers.add({",
+          "  key: 'Content-Type',",
+          "  value: 'application/json'",
+          "});"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Global test script",
+          "pm.test('Response time is less than 5000ms', function () {",
+          "  pm.expect(pm.response.responseTime).to.be.below(5000);",
+          "});",
+          "",
+          "pm.test('Response has valid JSON', function () {",
+          "  pm.response.to.have.jsonBody();",
+          "});"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "testClientId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Login successful', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response contains user data', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.have.property('user');",
+                  "  pm.expect(responseJson.user).to.have.property('id');",
+                  "  pm.expect(responseJson.user).to.have.property('username');",
+                  "});",
+                  "",
+                  "// Extract auth token if available",
+                  "if (pm.response.headers.get('set-cookie')) {",
+                  "  const cookies = pm.response.headers.get('set-cookie');",
+                  "  pm.collectionVariables.set('authToken', cookies);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Current User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Get user successful', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('User data is valid', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.have.property('id');",
+                  "  pm.expect(responseJson).to.have.property('username');",
+                  "  pm.expect(responseJson).to.have.property('role');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "me"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Clients",
+      "item": [
+        {
+          "name": "Create Client",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Client created successfully', function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test('Response contains client data', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.have.property('id');",
+                  "  pm.expect(responseJson).to.have.property('name');",
+                  "  pm.expect(responseJson.name).to.eql('API Test Client');",
+                  "  ",
+                  "  // Store client ID for subsequent tests",
+                  "  pm.collectionVariables.set('testClientId', responseJson.id);",
+                  "});",
+                  "",
+                  "pm.test('Client has correct properties', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.have.property('status');",
+                  "  pm.expect(responseJson).to.have.property('industry');",
+                  "  pm.expect(responseJson).to.have.property('createdAt');",
+                  "  pm.expect(responseJson).to.have.property('updatedAt');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"API Test Client\",\n  \"industry\": \"technology\",\n  \"companySize\": \"medium\",\n  \"status\": \"active\",\n  \"source\": \"direct\",\n  \"address\": \"123 API Test Street\",\n  \"website\": \"https://apitest.com\",\n  \"notes\": \"Created via API test\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/clients",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients"]
+            }
+          }
+        },
+        {
+          "name": "Get All Clients",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Get clients successful', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is an array', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test('Clients have required properties', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  if (responseJson.length > 0) {",
+                  "    const client = responseJson[0];",
+                  "    pm.expect(client).to.have.property('id');",
+                  "    pm.expect(client).to.have.property('name');",
+                  "    pm.expect(client).to.have.property('status');",
+                  "  }",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/clients",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients"]
+            }
+          }
+        },
+        {
+          "name": "Get Client by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Get client by ID successful', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Client data is correct', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.have.property('id');",
+                  "  pm.expect(responseJson.id).to.eql(parseInt(pm.collectionVariables.get('testClientId')));",
+                  "  pm.expect(responseJson.name).to.eql('API Test Client');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/clients/{{testClientId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients", "{{testClientId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Client",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Client updated successfully', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Updated data is correct', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson.name).to.eql('Updated API Test Client');",
+                  "  pm.expect(responseJson.status).to.eql('inactive');",
+                  "  pm.expect(responseJson.notes).to.eql('Updated via API test');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated API Test Client\",\n  \"status\": \"inactive\",\n  \"notes\": \"Updated via API test\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/clients/{{testClientId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients", "{{testClientId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Client Aggregated Data",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Get aggregated data successful', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Aggregated data structure is correct', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.have.property('client');",
+                  "  pm.expect(responseJson).to.have.property('contracts');",
+                  "  pm.expect(responseJson).to.have.property('services');",
+                  "  pm.expect(responseJson).to.have.property('safs');",
+                  "  pm.expect(responseJson).to.have.property('cocs');",
+                  "  pm.expect(responseJson).to.have.property('externalMappings');",
+                  "});",
+                  "",
+                  "pm.test('Client data matches', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson.client.id).to.eql(parseInt(pm.collectionVariables.get('testClientId')));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/clients/{{testClientId}}/aggregated-data",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients", "{{testClientId}}", "aggregated-data"]
+            }
+          }
+        },
+        {
+          "name": "Delete Client",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Client deleted successfully', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Success message is correct', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.have.property('message');",
+                  "  pm.expect(responseJson.message).to.include('deleted');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/clients/{{testClientId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "clients", "{{testClientId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "External Systems",
+      "item": [
+        {
+          "name": "Get External Systems",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Get external systems successful', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is an array', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test('External systems have required properties', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  if (responseJson.length > 0) {",
+                  "    const system = responseJson[0];",
+                  "    pm.expect(system).to.have.property('id');",
+                  "    pm.expect(system).to.have.property('name');",
+                  "    pm.expect(system).to.have.property('type');",
+                  "    pm.expect(system).to.have.property('baseUrl');",
+                  "  }",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/external-systems",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "external-systems"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard Widgets",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Get dashboard widgets successful', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response is an array', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test('Widgets have required properties', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  if (responseJson.length > 0) {",
+                  "    const widget = responseJson[0];",
+                  "    pm.expect(widget).to.have.property('id');",
+                  "    pm.expect(widget).to.have.property('title');",
+                  "    pm.expect(widget).to.have.property('type');",
+                  "    pm.expect(widget).to.have.property('config');",
+                  "  }",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/widgets",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "widgets"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Health Check",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Health check successful', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Health status is OK', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.have.property('status');",
+                  "  pm.expect(responseJson.status).to.eql('OK');",
+                  "});",
+                  "",
+                  "pm.test('Database connection is healthy', function () {",
+                  "  const responseJson = pm.response.json();",
+                  "  pm.expect(responseJson).to.have.property('database');",
+                  "  pm.expect(responseJson.database).to.eql('connected');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+} 

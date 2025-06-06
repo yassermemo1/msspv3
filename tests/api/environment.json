@@ -1,0 +1,32 @@
+{
+  "id": "test-environment",
+  "name": "Test Environment",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "enabled": true
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "testClientId",
+      "value": "",
+      "enabled": true
+    },
+    {
+      "key": "adminUsername",
+      "value": "admin",
+      "enabled": true
+    },
+    {
+      "key": "adminPassword",
+      "value": "admin123",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+} 

@@ -1,0 +1,11 @@
+name,vendor,productName,licenseType,totalLicenses,availableLicenses,orderedLicenses,costPerLicense,renewalDate,purchaseRequestNumber,purchaseOrderNumber,notes,isActive
+CrowdStrike Falcon Pool,CrowdStrike,Falcon Endpoint Protection,per device,500,125,500,35.00,2025-01-15,PR-2024-001,PO-2024-001,Enterprise endpoint protection licenses,true
+Splunk Enterprise Pool,Splunk,Splunk Enterprise Security,per GB/day,100,25,100,150.00,2025-03-01,PR-2024-002,PO-2024-002,SIEM data ingestion licenses,true
+Microsoft E5 Security Pool,Microsoft,Microsoft 365 E5 Security,per user,1000,250,1000,12.00,2025-06-30,PR-2024-003,PO-2024-003,Microsoft security suite licenses,true
+Tenable Nessus Pool,Tenable,Nessus Professional,per scanner,50,15,50,2990.00,2025-02-28,PR-2024-004,PO-2024-004,Vulnerability scanner licenses,true
+Palo Alto Prisma Pool,Palo Alto Networks,Prisma Cloud,per workload,200,50,200,25.00,2025-04-15,PR-2024-005,PO-2024-005,Cloud security platform licenses,true
+Carbon Black Defense Pool,VMware,Carbon Black Cloud,per endpoint,300,75,300,42.00,2025-05-01,PR-2024-006,PO-2024-006,Advanced threat protection licenses,true
+Rapid7 InsightVM Pool,Rapid7,InsightVM,per assessed asset,1000,200,1000,8.50,2025-07-31,PR-2024-007,PO-2024-007,Vulnerability management licenses,true
+Okta Workforce Pool,Okta,Okta Workforce Identity,per user,500,100,500,8.00,2025-12-31,PR-2024-008,PO-2024-008,Identity management licenses,true
+Proofpoint Email Pool,Proofpoint,Email Protection,per user,800,150,800,6.75,2025-09-15,PR-2024-009,PO-2024-009,Email security licenses,true
+Zscaler Internet Pool,Zscaler,Zscaler Internet Access,per user,600,125,600,15.00,2025-08-01,PR-2024-010,PO-2024-010,Secure web gateway licenses,true 

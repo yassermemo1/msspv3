@@ -1,0 +1,11 @@
+clientName,name,startDate,endDate,status,notes,autoRenewal,renewalTerms,totalValue,documentUrl
+TechCorp Solutions,Annual Security Services Contract,2024-01-01,2024-12-31,active,Comprehensive security package with SOC monitoring,true,Auto-renew for 1 year with 30-day notice,120000.00,/contracts/techcorp-2024.pdf
+HealthFirst Medical,HIPAA Compliance Package,2024-02-15,2025-02-14,active,Healthcare-specific security and compliance services,true,Annual renewal with price adjustment clause,180000.00,/contracts/healthfirst-2024.pdf
+Global Finance Corp,Enterprise Security Framework,2024-01-15,2027-01-14,active,3-year enterprise security contract,false,Fixed 3-year term,500000.00,/contracts/globalfinance-2024.pdf
+Manufacturing Plus,OT Security Assessment,2024-03-01,2024-08-31,active,Operational technology security evaluation,false,Project-based completion,75000.00,/contracts/mfgplus-2024.pdf
+EduTech University,Campus-wide Security Services,2024-09-01,2025-08-31,active,Academic year security services contract,true,Annual renewal with budget approval,200000.00,/contracts/edutech-2024.pdf
+RetailMax Chain,PCI Compliance Services,2024-01-01,2024-12-31,active,Payment card industry compliance program,true,Annual renewal required,95000.00,/contracts/retailmax-2024.pdf
+LegalEagle LLP,Law Firm Security Package,2024-04-01,2025-03-31,active,Legal industry specific security services,true,Annual renewal with confidentiality updates,85000.00,/contracts/legaleagle-2024.pdf
+PowerGrid Energy,Critical Infrastructure Protection,2024-01-01,2026-12-31,active,3-year critical infrastructure security contract,false,Fixed term with option to extend,750000.00,/contracts/powergrid-2024.pdf
+BioTech Research,IP Protection Services,2024-06-01,2025-05-31,active,Intellectual property and research data protection,true,Annual renewal with IP clause updates,150000.00,/contracts/biotech-2024.pdf
+TransGlobal Logistics,Supply Chain Security,2024-07-01,2025-06-30,active,Transportation and logistics security services,true,Annual renewal with scope adjustments,110000.00,/contracts/transglobal-2024.pdf 

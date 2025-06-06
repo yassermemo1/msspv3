@@ -1,0 +1,21 @@
+type,amount,description,status,clientName,contractName,transactionDate,category,reference,notes
+invoice,15000.00,SOC Monitoring Setup - Initial Phase,paid,TechCorp Solutions,Annual Security Services Contract,2024-01-15,service_revenue,INV-TC-001-2024,Initial SOC deployment payment
+payment,15000.00,Payment received for SOC setup,completed,TechCorp Solutions,Annual Security Services Contract,2024-01-30,service_revenue,PAY-TC-001-2024,Payment received on time
+invoice,12000.00,HIPAA Compliance Assessment,paid,HealthFirst Medical,HIPAA Compliance Package,2024-02-20,service_revenue,INV-HF-001-2024,Healthcare compliance audit
+payment,12000.00,Payment for HIPAA assessment,completed,HealthFirst Medical,HIPAA Compliance Package,2024-03-05,service_revenue,PAY-HF-001-2024,Payment received
+invoice,45000.00,Network Segmentation - Phase 1,pending,Global Finance Corp,Enterprise Security Framework,2024-01-20,service_revenue,INV-GF-001-2024,Enterprise network redesign
+expense,8500.00,Palo Alto Firewall Purchase,paid,,,2024-01-15,hardware_purchase,EXP-HW-001-2024,PA-3220 firewall for TechCorp
+expense,25000.00,IBM QRadar Appliance,paid,,,2024-03-15,hardware_purchase,EXP-HW-002-2024,SIEM appliance purchase
+invoice,25000.00,OT Security Assessment,paid,Manufacturing Plus,OT Security Assessment,2024-03-05,service_revenue,INV-MP-001-2024,Industrial security evaluation
+payment,25000.00,OT assessment payment received,completed,Manufacturing Plus,OT Security Assessment,2024-03-20,service_revenue,PAY-MP-001-2024,Payment for OT assessment
+expense,17500.00,CrowdStrike License Purchase,paid,,,2024-01-15,license_purchase,EXP-LIC-001-2024,Annual CrowdStrike licenses
+invoice,18000.00,PCI Compliance Audit,paid,RetailMax Chain,PCI Compliance Services,2024-01-05,service_revenue,INV-RC-001-2024,Payment processing compliance
+payment,18000.00,PCI audit payment,completed,RetailMax Chain,PCI Compliance Services,2024-01-20,service_revenue,PAY-RC-001-2024,PCI compliance payment
+invoice,22000.00,Legal Data Protection Implementation,paid,LegalEagle LLP,Law Firm Security Package,2024-04-05,service_revenue,INV-LE-001-2024,Law firm security implementation
+payment,22000.00,Legal security payment,completed,LegalEagle LLP,Law Firm Security Package,2024-04-20,service_revenue,PAY-LE-001-2024,Legal security payment received
+expense,12000.00,Dell PowerEdge Server,paid,,,2024-01-10,hardware_purchase,EXP-HW-003-2024,SIEM server for log aggregation
+invoice,65000.00,Critical Infrastructure Assessment,paid,PowerGrid Energy,Critical Infrastructure Protection,2024-01-05,service_revenue,INV-PG-001-2024,NERC CIP compliance assessment
+payment,65000.00,Critical infrastructure payment,completed,PowerGrid Energy,Critical Infrastructure Protection,2024-01-25,service_revenue,PAY-PG-001-2024,Energy sector compliance payment
+expense,22000.00,F5 BIG-IP Load Balancer,paid,,,2024-05-01,hardware_purchase,EXP-HW-004-2024,Application delivery controller
+invoice,35000.00,Campus Network Security,pending,EduTech University,Campus-wide Security Services,2024-09-05,service_revenue,INV-EU-001-2024,University network security
+expense,18000.00,Juniper SRX4600 Firewall,paid,,,2024-04-01,hardware_purchase,EXP-HW-005-2024,High-performance security gateway 

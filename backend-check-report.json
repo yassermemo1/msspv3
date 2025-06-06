@@ -1,0 +1,192 @@
+{
+  "timestamp": "2025-06-06T17:46:16.720Z",
+  "summary": {
+    "total": 15,
+    "empty": 0,
+    "minimal": 0,
+    "hasContent": 15,
+    "errors": 0,
+    "apiErrors": 0
+  },
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [],
+      "errors": []
+    },
+    {
+      "route": "/dashboard",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [
+        "/api/dashboard/stats: 200 (480 chars)",
+        "/api/dashboard/widgets: 500 (47 chars)"
+      ],
+      "errors": []
+    },
+    {
+      "route": "/clients",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [
+        "/api/clients: 200 (897 chars)"
+      ],
+      "errors": []
+    },
+    {
+      "route": "/services",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [
+        "/api/services: 200 (1025 chars)"
+      ],
+      "errors": []
+    },
+    {
+      "route": "/contracts",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [],
+      "errors": []
+    },
+    {
+      "route": "/licenses",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [
+        "/api/licenses: 404 (167 chars)",
+        "/api/license-pools: 200 (2 chars)"
+      ],
+      "errors": []
+    },
+    {
+      "route": "/hardware",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [],
+      "errors": []
+    },
+    {
+      "route": "/saf",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [],
+      "errors": []
+    },
+    {
+      "route": "/coc",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [],
+      "errors": []
+    },
+    {
+      "route": "/users",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [
+        "/api/users: 200 (275 chars)"
+      ],
+      "errors": []
+    },
+    {
+      "route": "/admin",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [],
+      "errors": []
+    },
+    {
+      "route": "/reports",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [],
+      "errors": []
+    },
+    {
+      "route": "/external-systems",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [],
+      "errors": []
+    },
+    {
+      "route": "/audit-logs",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [
+        "/api/audit-logs: 200 (2 chars)"
+      ],
+      "errors": []
+    },
+    {
+      "route": "/profile",
+      "status": 200,
+      "statusText": "OK",
+      "contentType": "text/html; charset=utf-8",
+      "contentLength": 620,
+      "hasHtml": true,
+      "htmlSnippet": "",
+      "apiCalls": [],
+      "errors": []
+    }
+  ]
+}

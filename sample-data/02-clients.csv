@@ -1,0 +1,16 @@
+name,industry,companySize,status,source,address,website,notes,contactName,contactEmail,contactPhone,contactTitle
+TechCorp Solutions,Technology,50-100,active,referral,"123 Tech Street, San Francisco, CA 94105",https://techcorp.com,Key client with multiple security needs,John Doe,john.doe@techcorp.com,+1-555-0101,IT Director
+HealthFirst Medical,Healthcare,100-500,active,website,"456 Medical Ave, Boston, MA 02115",https://healthfirst.com,HIPAA compliance requirements,Jane Smith,jane.smith@healthfirst.com,+1-555-0102,CISO
+Global Finance Corp,Financial Services,500+,active,partnership,"789 Wall Street, New York, NY 10005",https://globalfinance.com,High-security requirements for financial data,Michael Johnson,m.johnson@globalfinance.com,+1-555-0103,Security Manager
+Manufacturing Plus,Manufacturing,200-500,active,cold_call,"321 Industrial Blvd, Detroit, MI 48201",https://mfgplus.com,OT security and compliance needs,Sarah Wilson,sarah.w@mfgplus.com,+1-555-0104,Plant Manager
+EduTech University,Education,1000+,active,referral,"555 Campus Dr, Austin, TX 78712",https://edutech.edu,Large educational institution with research data,David Brown,d.brown@edutech.edu,+1-555-0105,IT Security Director
+RetailMax Chain,Retail,100-200,active,website,"888 Commerce St, Seattle, WA 98101",https://retailmax.com,PCI compliance and customer data protection,Lisa Garcia,l.garcia@retailmax.com,+1-555-0106,IT Manager
+CloudStart Inc,Technology,10-50,prospect,referral,"111 Startup Way, Palo Alto, CA 94301",https://cloudstart.io,Fast-growing cloud startup,Mark Davis,mark@cloudstart.io,+1-555-0107,Founder
+LegalEagle LLP,Legal Services,50-100,active,partnership,"222 Law Ave, Washington, DC 20001",https://legaleagle.com,Law firm with confidentiality requirements,Emily Rodriguez,e.rodriguez@legaleagle.com,+1-555-0108,Managing Partner
+PowerGrid Energy,Energy,500+,active,cold_call,"333 Energy Blvd, Houston, TX 77002",https://powergrid.com,Critical infrastructure protection,Robert Miller,r.miller@powergrid.com,+1-555-0109,Security Chief
+ConsultPro Services,Consulting,20-50,prospect,website,"444 Business Park, Chicago, IL 60601",https://consultpro.com,Growing consulting firm,Jennifer Taylor,j.taylor@consultpro.com,+1-555-0110,Operations Manager
+BioTech Research,Biotechnology,100-200,active,referral,"555 Research Dr, San Diego, CA 92101",https://biotech-research.com,Intellectual property protection,Thomas Anderson,t.anderson@biotech-research.com,+1-555-0111,R&D Director
+TransGlobal Logistics,Transportation,200-500,active,partnership,"666 Shipping Ln, Miami, FL 33101",https://transglobal.com,Supply chain security requirements,Maria Gonzalez,m.gonzalez@transglobal.com,+1-555-0112,Logistics Director
+MediaCorp Studios,Media,50-100,prospect,website,"777 Entertainment Blvd, Los Angeles, CA 90028",https://mediacorp.com,Content protection and digital rights,Kevin White,k.white@mediacorp.com,+1-555-0113,CTO
+AgroFresh Farms,Agriculture,100-200,active,cold_call,"888 Farm Rd, Des Moines, IA 50301",https://agrofresh.com,Agricultural technology security,Amy Johnson,a.johnson@agrofresh.com,+1-555-0114,IT Coordinator
+ConstructMax Corp,Construction,200-300,prospect,referral,"999 Builder St, Phoenix, AZ 85001",https://constructmax.com,Project management and data security,Daniel Wilson,d.wilson@constructmax.com,+1-555-0115,Project Manager 

@@ -1,0 +1,4545 @@
+🛠️  Starting MSSP Client Manager in DEVELOPMENT mode
+📊 Using production database with migrated data (66 clients + 1 user)
+⚠️  NOTE: This points to the same database as production
+🔧 Database Password: 12345678 (confirmed working)
+
+✅ Environment configured for development
+🗄️  Database: mssp_production (shared with production)
+👤 Admin User: admin@mssp.local
+
+🔍 Verifying database connection...
+✅ Database connection successful
+📊 Starting development mode with 66 clients + 1 user...
+💡 Admin login: admin@mssp.local
+
+
+> rest-express@1.6.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+No SMTP configuration found. Email notifications disabled.
+
+⚙️  Environment Configuration Summary
+════════════════════════════════════
+Environment: development
+Server: localhost:5001
+Database: Local
+LDAP: Enabled
+Email: Disabled
+Testing: Enabled
+Security: 2FA Optional
+════════════════════════════════════
+
+
+🧪 Test Credentials (Development Only):
+═══════════════════════════════════════
+ADMIN   : admin@test.mssp.local     | testpassword123
+MANAGER : manager@test.mssp.local   | testpassword123
+ENGINEER: engineer@test.mssp.local  | testpassword123
+USER    : user@test.mssp.local      | testpassword123
+
+🔌 LDAP Test Configuration:
+═══════════════════════════════════
+URL: ldap://ldap.forumsys.com:389
+Search Base: dc=example,dc=com
+ADMIN: testadmin | IHGn8*5#zLKPgGQ@
+USER: testuser | pmknYFQfTToZl1Cf
+
+💡 Set TEST_PASSWORD env var to use custom password for all test accounts
+═══════════════════════════════════════════════════════════════════════════
+
+✅ Uploads directory exists: /Users/yasseralmohammed/msspv2/MsspClientManager/uploads
+🔄 Initializing database auto-sync...
+🔌 Checking database connection...
+✅ Database connection successful
+📦 Running database migrations...
+🚀 Pushing schema changes...
+✅ Schema migrations completed
+📝 Updating schema version...
+⚠️  Could not update schema version: error: relation "schema_versions" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async DatabaseAutoSync.updateSchemaVersion (/Users/yasseralmohammed/msspv2/MsspClientManager/server/db-auto-sync.ts:219:7)
+    at async DatabaseAutoSync.initialize (/Users/yasseralmohammed/msspv2/MsspClientManager/server/db-auto-sync.ts:42:7)
+    at async setupDatabaseAutoSync (/Users/yasseralmohammed/msspv2/MsspClientManager/server/db-auto-sync.ts:238:3)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/index.ts:57:3) {
+  length: 114,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '13',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+✅ Database auto-sync completed successfully
+🚀 Initializing default integrations...
+🔓 SSL Certificate verification disabled for internal systems
+📊 Connecting to database: postgresql://mssp_user:***@localhost:5432/mssp_production
+📋 Checking default Jira system...
+❌ Error initializing integrations: relation "external_systems" does not exist
+🔧 This is non-critical - server will continue without default integrations
+💡 To enable integrations, ensure all dependencies are installed and database is accessible
+=== SESSION CONFIGURATION ===
+Secure cookies: false
+SameSite policy: lax
+Environment: development
+==============================
+=== REGISTERING LDAP STRATEGY ===
+Using LDAP configuration from environment variables
+=== LDAP STRATEGY CONFIGURATION ===
+LDAP URL: ldap://ldap.forumsys.com:389
+Search Base: dc=example,dc=com
+Search Filter: (uid={{username}})
+Search Attributes: [ 'uid', 'mail', 'givenName', 'sn', 'cn', 'dn' ]
+===================================
+LDAP strategy registered successfully
+=================================
+Starting scheduled tasks...
+⚠️ Development mode: Contract reminder scheduler disabled to prevent spam
+📧 Contract reminders will only run in production mode
+Starting scheduled tasks...
+No SMTP configuration found. Email notifications disabled.
+7:39:45 PM [vite] serving on http://localhost:5001
+=== LOGIN ATTEMPT ===
+Email: admin@test.mssp.local
+Password received: Yes
+=== STORAGE: getUserByEmail ===
+Looking for email: admin@test.mssp.local
+Query result: User found
+User ID: 1
+User email: admin@test.mssp.local
+=============================
+User found: true
+Using bcrypt comparison for hash: $2b$10$nxx...
+Password match: true
+===================
+Serializing user: 1
+=== LOGIN SUCCESS ===
+User logged in: admin@test.mssp.local
+Session ID: wjgosO-uU2x0_KVnz0pP0CoipyWah2Cq
+Session before save: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:39:54.249Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    domain: undefined
+  },
+  passport: { user: '1' }
+}
+Session saved successfully
+Session after save: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:39:54.249Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    domain: undefined
+  },
+  passport: { user: '1' }
+}
+Is authenticated after save: true
+===================
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+=== USER REQUEST DEBUG ===
+Session ID: 3QjCHgjOQfxLr0EI_9QJE2jw4KdrDc3S
+Session data: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:40:43.699Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    domain: undefined
+  }
+}
+Is authenticated: false
+User from request: undefined
+Cookies received: mssp.sid=s%3Alv2zXqUg9t6rE-cR4A5t4D8byhJEaU85.iIQ1j39vGoHjQdgS5gWrhIm2fZss3%2FSpbvPL6UbDXp0; session=s%3AT3hjaPDzxMsgO83DlQxJiVfJ778W3PcC.zIGq%2FU%2BsfYXS8yhPE3fk%2FB9IypHClNGoDEYjRZWJV9A
+All headers: {
+  host: 'localhost:5001',
+  connection: 'keep-alive',
+  'sec-ch-ua-platform': '"macOS"',
+  'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+  'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+  dnt: '1',
+  'sec-ch-ua-mobile': '?0',
+  accept: '*/*',
+  'sec-fetch-site': 'same-origin',
+  'sec-fetch-mode': 'cors',
+  'sec-fetch-dest': 'empty',
+  referer: 'http://localhost:5001/',
+  'accept-encoding': 'gzip, deflate, br, zstd',
+  'accept-language': 'en-US,en;q=0.9',
+  cookie: 'mssp.sid=s%3Alv2zXqUg9t6rE-cR4A5t4D8byhJEaU85.iIQ1j39vGoHjQdgS5gWrhIm2fZss3%2FSpbvPL6UbDXp0; session=s%3AT3hjaPDzxMsgO83DlQxJiVfJ778W3PcC.zIGq%2FU%2BsfYXS8yhPE3fk%2FB9IypHClNGoDEYjRZWJV9A',
+  'if-none-match': 'W/"ff-P4oYP2EeFzk5ARnqkyUBdeE1n6c"'
+}
+========================
+=== USER REQUEST DEBUG ===
+Session ID: MuL-kIUlemp0-Wy1-iz5itmUZJk8uO2j
+Session data: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:40:43.935Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    domain: undefined
+  }
+}
+Is authenticated: false
+User from request: undefined
+Cookies received: mssp.sid=s%3Alv2zXqUg9t6rE-cR4A5t4D8byhJEaU85.iIQ1j39vGoHjQdgS5gWrhIm2fZss3%2FSpbvPL6UbDXp0; session=s%3AT3hjaPDzxMsgO83DlQxJiVfJ778W3PcC.zIGq%2FU%2BsfYXS8yhPE3fk%2FB9IypHClNGoDEYjRZWJV9A
+All headers: {
+  host: 'localhost:5001',
+  connection: 'keep-alive',
+  'sec-ch-ua-platform': '"macOS"',
+  'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+  'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+  dnt: '1',
+  'sec-ch-ua-mobile': '?0',
+  accept: '*/*',
+  'sec-fetch-site': 'same-origin',
+  'sec-fetch-mode': 'cors',
+  'sec-fetch-dest': 'empty',
+  referer: 'http://localhost:5001/login',
+  'accept-encoding': 'gzip, deflate, br, zstd',
+  'accept-language': 'en-US,en;q=0.9',
+  cookie: 'mssp.sid=s%3Alv2zXqUg9t6rE-cR4A5t4D8byhJEaU85.iIQ1j39vGoHjQdgS5gWrhIm2fZss3%2FSpbvPL6UbDXp0; session=s%3AT3hjaPDzxMsgO83DlQxJiVfJ778W3PcC.zIGq%2FU%2BsfYXS8yhPE3fk%2FB9IypHClNGoDEYjRZWJV9A',
+  'if-none-match': 'W/"ff-P4oYP2EeFzk5ARnqkyUBdeE1n6c"'
+}
+========================
+=== LOGIN ATTEMPT ===
+Email: admin@test.mssp.local
+Password received: Yes
+=== STORAGE: getUserByEmail ===
+Looking for email: admin@test.mssp.local
+Query result: User found
+User ID: 1
+User email: admin@test.mssp.local
+=============================
+User found: true
+Using bcrypt comparison for hash: $2b$10$nxx...
+Password match: true
+===================
+Serializing user: 1
+=== LOGIN SUCCESS ===
+User logged in: admin@test.mssp.local
+Session ID: R76b7OwJ1Srm1WwTeS-at5j8NvReLeM5
+Session before save: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:40:46.174Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    domain: undefined
+  },
+  passport: { user: '1' }
+}
+Session saved successfully
+Session after save: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:40:46.174Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    domain: undefined
+  },
+  passport: { user: '1' }
+}
+Is authenticated after save: true
+===================
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+=== USER REQUEST DEBUG ===
+Session ID: R76b7OwJ1Srm1WwTeS-at5j8NvReLeM5
+Session data: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:40:46.174Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax'
+  },
+  passport: { user: '1' }
+}
+Is authenticated: true
+User from request: {
+  id: 1,
+  username: 'admin',
+  email: 'admin@test.mssp.local',
+  firstName: 'Admin',
+  lastName: 'User',
+  role: 'admin',
+  authProvider: 'local',
+  ldapId: null,
+  isActive: true,
+  twoFactorSecret: null,
+  twoFactorBackupCodes: null,
+  createdAt: 2025-06-06T02:40:03.882Z
+}
+Cookies received: mssp.sid=s%3Alv2zXqUg9t6rE-cR4A5t4D8byhJEaU85.iIQ1j39vGoHjQdgS5gWrhIm2fZss3%2FSpbvPL6UbDXp0; session=s%3AR76b7OwJ1Srm1WwTeS-at5j8NvReLeM5.24F1PY3ovcLiY0N%2F3Fw2gE7WZWWF1UBeHUTGhcEu5r8
+All headers: {
+  host: 'localhost:5001',
+  connection: 'keep-alive',
+  'sec-ch-ua-platform': '"macOS"',
+  'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+  'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+  dnt: '1',
+  'sec-ch-ua-mobile': '?0',
+  accept: '*/*',
+  'sec-fetch-site': 'same-origin',
+  'sec-fetch-mode': 'cors',
+  'sec-fetch-dest': 'empty',
+  referer: 'http://localhost:5001/login',
+  'accept-encoding': 'gzip, deflate, br, zstd',
+  'accept-language': 'en-US,en;q=0.9',
+  cookie: 'mssp.sid=s%3Alv2zXqUg9t6rE-cR4A5t4D8byhJEaU85.iIQ1j39vGoHjQdgS5gWrhIm2fZss3%2FSpbvPL6UbDXp0; session=s%3AR76b7OwJ1Srm1WwTeS-at5j8NvReLeM5.24F1PY3ovcLiY0N%2F3Fw2gE7WZWWF1UBeHUTGhcEu5r8',
+  'if-none-match': 'W/"ff-P4oYP2EeFzk5ARnqkyUBdeE1n6c"'
+}
+========================
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Get license pools error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllLicensePools (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:898:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:5287:28) {
+  length: 113,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '252',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Get clients error: error: column "short_name" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllClients (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:519:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:360:23) {
+  length: 174,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.shortName".',
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Get contracts error: error: column "client_id" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllContracts (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:772:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:771:21) {
+  length: 174,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.clientId".',
+  position: '14',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Get services error: error: column "delivery_model" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllServices (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:719:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:4971:24) {
+  length: 183,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "services.deliveryModel".',
+  position: '49',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Get dashboard stats error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2618:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '26',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+=== STORAGE: getUserDashboardSettings ===
+User ID: 1
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Found 0 dashboard settings
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+=== USER REQUEST DEBUG ===
+Session ID: R76b7OwJ1Srm1WwTeS-at5j8NvReLeM5
+Session data: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:40:46.311Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax'
+  },
+  passport: { user: '1' }
+}
+Is authenticated: true
+User from request: {
+  id: 1,
+  username: 'admin',
+  email: 'admin@test.mssp.local',
+  firstName: 'Admin',
+  lastName: 'User',
+  role: 'admin',
+  authProvider: 'local',
+  ldapId: null,
+  isActive: true,
+  twoFactorSecret: null,
+  twoFactorBackupCodes: null,
+  createdAt: 2025-06-06T02:40:03.882Z
+}
+Cookies received: mssp.sid=s%3Alv2zXqUg9t6rE-cR4A5t4D8byhJEaU85.iIQ1j39vGoHjQdgS5gWrhIm2fZss3%2FSpbvPL6UbDXp0; session=s%3AR76b7OwJ1Srm1WwTeS-at5j8NvReLeM5.24F1PY3ovcLiY0N%2F3Fw2gE7WZWWF1UBeHUTGhcEu5r8
+All headers: {
+  host: 'localhost:5001',
+  connection: 'keep-alive',
+  'sec-ch-ua-platform': '"macOS"',
+  'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+  'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+  dnt: '1',
+  'sec-ch-ua-mobile': '?0',
+  accept: '*/*',
+  'sec-fetch-site': 'same-origin',
+  'sec-fetch-mode': 'cors',
+  'sec-fetch-dest': 'empty',
+  referer: 'http://localhost:5001/login',
+  'accept-encoding': 'gzip, deflate, br, zstd',
+  'accept-language': 'en-US,en;q=0.9',
+  cookie: 'mssp.sid=s%3Alv2zXqUg9t6rE-cR4A5t4D8byhJEaU85.iIQ1j39vGoHjQdgS5gWrhIm2fZss3%2FSpbvPL6UbDXp0; session=s%3AR76b7OwJ1Srm1WwTeS-at5j8NvReLeM5.24F1PY3ovcLiY0N%2F3Fw2gE7WZWWF1UBeHUTGhcEu5r8',
+  'if-none-match': 'W/"ff-P4oYP2EeFzk5ARnqkyUBdeE1n6c"'
+}
+========================
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Get license pools error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllLicensePools (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:898:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:5287:28) {
+  length: 113,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '252',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Get clients error: error: column "short_name" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllClients (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:519:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:360:23) {
+  length: 174,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.shortName".',
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Get contracts error: error: column "client_id" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllContracts (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:772:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:771:21) {
+  length: 174,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.clientId".',
+  position: '14',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Get services error: error: column "delivery_model" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllServices (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:719:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:4971:24) {
+  length: 183,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "services.deliveryModel".',
+  position: '49',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Get dashboard stats error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2618:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '26',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+=== STORAGE: getUserDashboardSettings ===
+User ID: 1
+Found 0 dashboard settings
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Dashboard card data error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2759:31) {
+  length: 112,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Get license pools error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllLicensePools (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:898:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:5287:28) {
+  length: 113,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '252',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Get license pools error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllLicensePools (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:898:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:5287:28) {
+  length: 113,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '252',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Get license pools error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllLicensePools (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:898:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:5287:28) {
+  length: 113,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '252',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+=== USER REQUEST DEBUG ===
+Session ID: R76b7OwJ1Srm1WwTeS-at5j8NvReLeM5
+Session data: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:40:54.875Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax'
+  },
+  passport: { user: '1' }
+}
+Is authenticated: true
+User from request: {
+  id: 1,
+  username: 'admin',
+  email: 'admin@test.mssp.local',
+  firstName: 'Admin',
+  lastName: 'User',
+  role: 'admin',
+  authProvider: 'local',
+  ldapId: null,
+  isActive: true,
+  twoFactorSecret: null,
+  twoFactorBackupCodes: null,
+  createdAt: 2025-06-06T02:40:03.882Z
+}
+Cookies received: mssp.sid=s%3Alv2zXqUg9t6rE-cR4A5t4D8byhJEaU85.iIQ1j39vGoHjQdgS5gWrhIm2fZss3%2FSpbvPL6UbDXp0; session=s%3AR76b7OwJ1Srm1WwTeS-at5j8NvReLeM5.24F1PY3ovcLiY0N%2F3Fw2gE7WZWWF1UBeHUTGhcEu5r8
+All headers: {
+  host: 'localhost:5001',
+  connection: 'keep-alive',
+  'sec-ch-ua-platform': '"macOS"',
+  'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+  'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+  dnt: '1',
+  'sec-ch-ua-mobile': '?0',
+  accept: '*/*',
+  'sec-fetch-site': 'same-origin',
+  'sec-fetch-mode': 'cors',
+  'sec-fetch-dest': 'empty',
+  referer: 'http://localhost:5001/',
+  'accept-encoding': 'gzip, deflate, br, zstd',
+  'accept-language': 'en-US,en;q=0.9',
+  cookie: 'mssp.sid=s%3Alv2zXqUg9t6rE-cR4A5t4D8byhJEaU85.iIQ1j39vGoHjQdgS5gWrhIm2fZss3%2FSpbvPL6UbDXp0; session=s%3AR76b7OwJ1Srm1WwTeS-at5j8NvReLeM5.24F1PY3ovcLiY0N%2F3Fw2gE7WZWWF1UBeHUTGhcEu5r8',
+  'if-none-match': 'W/"ff-P4oYP2EeFzk5ARnqkyUBdeE1n6c"'
+}
+========================
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Get license pools error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllLicensePools (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:898:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:5287:28) {
+  length: 113,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '252',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+=== STORAGE: getUserDashboardSettings ===
+User ID: 1
+Get clients error: error: column "short_name" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllClients (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:519:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:360:23) {
+  length: 174,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.shortName".',
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Get contracts error: error: column "client_id" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllContracts (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:772:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:771:21) {
+  length: 174,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.clientId".',
+  position: '14',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Get services error: error: column "delivery_model" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllServices (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:719:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:4971:24) {
+  length: 183,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "services.deliveryModel".',
+  position: '49',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Found 0 dashboard settings
+Get dashboard stats error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2618:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '26',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Dashboard card data error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2759:31) {
+  length: 112,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Get license pools error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllLicensePools (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:898:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:5287:28) {
+  length: 113,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '252',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Get license pools error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllLicensePools (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:898:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:5287:28) {
+  length: 113,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '252',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Get license pools error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllLicensePools (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:898:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:5287:28) {
+  length: 113,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '252',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Dashboard card data error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2759:31) {
+  length: 112,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Dashboard card data error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2759:31) {
+  length: 112,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2759:31) {
+  length: 112,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Dashboard card data error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2759:31) {
+  length: 112,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2759:31) {
+  length: 112,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2759:31) {
+  length: 112,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Dashboard card data error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2759:31) {
+  length: 112,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+=== LOGIN ATTEMPT ===
+Email: admin@test.mssp.local
+Password received: Yes
+=== STORAGE: getUserByEmail ===
+Looking for email: admin@test.mssp.local
+Query result: User found
+User ID: 1
+User email: admin@test.mssp.local
+=============================
+User found: true
+Using bcrypt comparison for hash: $2b$10$nxx...
+Password match: true
+===================
+Serializing user: 1
+=== LOGIN SUCCESS ===
+User logged in: admin@test.mssp.local
+Session ID: f4SAwf-rhJhFXkv7lij2Woumw2f_Qf0y
+Session before save: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:44:46.803Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    domain: undefined
+  },
+  passport: { user: '1' }
+}
+Session saved successfully
+Session after save: Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-06-07T16:44:46.803Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'lax',
+    domain: undefined
+  },
+  passport: { user: '1' }
+}
+Is authenticated after save: true
+===================
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Get license pools error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllLicensePools (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:898:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:5287:28) {
+  length: 113,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '252',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Dashboard card data error: error: relation "license_pools" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2759:31) {
+  length: 112,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1384',
+  routine: 'parserOpenTable'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Get contracts error: error: column "client_id" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllContracts (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:772:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:771:21) {
+  length: 174,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.clientId".',
+  position: '14',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Get clients error: error: column "short_name" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllClients (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:519:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:360:23) {
+  length: 174,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.shortName".',
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+7:46:57 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+7:47:00 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+7:47:07 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+7:47:09 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+7:47:09 PM [vite] warning: Duplicate key "clientId" in object literal
+131|    id: serial("id").primaryKey(),
+132|    clientId: integer("clientId").notNull().references(() => clients.id),
+133|    clientId: integer("client_id").notNull().references(() => clients.id),
+   |    ^
+134|    name: text("name").notNull(),
+135|    email: text("email").notNull(),
+
+  Plugin: vite:esbuild
+  File: /Users/yasseralmohammed/msspv2/MsspClientManager/shared/schema.ts
+7:47:10 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+7:47:11 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+7:47:12 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+7:47:12 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+7:47:22 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+7:47:24 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column "total_value" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2770:31) {
+  length: 178,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "contracts.totalValue".',
+  position: '12',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Dashboard card data error: error: column clients.created_at does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:2837:31) {
+  length: 180,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.createdAt".',
+  position: '38',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+7:47:26 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+7:47:26 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+7:47:27 PM [vite] hmr update /src/components/forms/client-form.tsx, /src/index.css?v=D3Dc9ngHnUHDhwTaRy5nt, /src/components/forms/service-form.tsx, /src/components/forms/license-pool-form.tsx
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Deserializing user ID: 1 Type: string
+getUserById called with ID: 1 Type: string
+Treating as integer ID
+User deserialized successfully: admin@test.mssp.local
+Get clients error: error: column "short_name" does not exist
+    at /Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/node_modules/src/node-postgres/session.ts:104:19)
+    at async DatabaseStorage.getAllClients (/Users/yasseralmohammed/msspv2/MsspClientManager/server/storage.ts:519:12)
+    at async <anonymous> (/Users/yasseralmohammed/msspv2/MsspClientManager/server/routes.ts:360:23) {
+  length: 174,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "clients.shortName".',
+  position: '22',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3657',
+  routine: 'errorMissingColumn'
+}
+SIGTERM received, shutting down gracefully...
+Stopping scheduled tasks...
+All scheduled tasks stopped
+Stopping scheduled tasks...
+HTTP server closed.
