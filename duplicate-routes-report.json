@@ -1,0 +1,145 @@
+{
+  "summary": {
+    "totalRoutes": 179,
+    "duplicateGroups": 8,
+    "totalDuplicateOccurrences": 16
+  },
+  "duplicates": [
+    {
+      "method": "GET",
+      "path": "/api/certificates-of-compliance",
+      "normalizedRoute": "GET /api/certificates-of-compliance",
+      "occurrences": [
+        {
+          "lineNumber": 1302,
+          "line": "app.get(\"/api/certificates-of-compliance\", requireAuth, async (req, res) => {",
+          "action": "keep"
+        },
+        {
+          "lineNumber": 6453,
+          "line": "app.get(\"/api/certificates-of-compliance\", requireAuth, async (req, res) => {",
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/certificates-of-compliance",
+      "normalizedRoute": "POST /api/certificates-of-compliance",
+      "occurrences": [
+        {
+          "lineNumber": 1351,
+          "line": "app.post(\"/api/certificates-of-compliance\", requireManagerOrAbove, async (req, res) => {",
+          "action": "keep"
+        },
+        {
+          "lineNumber": 6513,
+          "line": "app.post(\"/api/certificates-of-compliance\", requireManagerOrAbove, async (req, res) => {",
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/certificates-of-compliance/:param",
+      "normalizedRoute": "DELETE /api/certificates-of-compliance/:param",
+      "occurrences": [
+        {
+          "lineNumber": 1417,
+          "line": "app.delete(\"/api/certificates-of-compliance/:id\", requireManagerOrAbove, async (req, res) => {",
+          "action": "keep"
+        },
+        {
+          "lineNumber": 6619,
+          "line": "app.delete(\"/api/certificates-of-compliance/:id\", requireManagerOrAbove, async (req, res) => {",
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/license-pools",
+      "normalizedRoute": "GET /api/license-pools",
+      "occurrences": [
+        {
+          "lineNumber": 5576,
+          "line": "app.get(\"/api/license-pools\", requireAuth, async (req, res) => {",
+          "action": "keep"
+        },
+        {
+          "lineNumber": 6152,
+          "line": "app.get(\"/api/license-pools\", requireAuth, async (req, res) => {",
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/license-pools/:param",
+      "normalizedRoute": "GET /api/license-pools/:param",
+      "occurrences": [
+        {
+          "lineNumber": 5587,
+          "line": "app.get(\"/api/license-pools/:id\", requireAuth, async (req, res) => {",
+          "action": "keep"
+        },
+        {
+          "lineNumber": 6163,
+          "line": "app.get(\"/api/license-pools/:id\", requireAuth, async (req, res) => {",
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/license-pools",
+      "normalizedRoute": "POST /api/license-pools",
+      "occurrences": [
+        {
+          "lineNumber": 5604,
+          "line": "app.post(\"/api/license-pools\", requireManagerOrAbove, async (req, res) => {",
+          "action": "keep"
+        },
+        {
+          "lineNumber": 6180,
+          "line": "app.post(\"/api/license-pools\", requireManagerOrAbove, async (req, res) => {",
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/api/license-pools/:param",
+      "normalizedRoute": "PUT /api/license-pools/:param",
+      "occurrences": [
+        {
+          "lineNumber": 5618,
+          "line": "app.put(\"/api/license-pools/:id\", requireManagerOrAbove, async (req, res) => {",
+          "action": "keep"
+        },
+        {
+          "lineNumber": 6194,
+          "line": "app.put(\"/api/license-pools/:id\", requireManagerOrAbove, async (req, res) => {",
+          "action": "remove"
+        }
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/license-pools/:param",
+      "normalizedRoute": "DELETE /api/license-pools/:param",
+      "occurrences": [
+        {
+          "lineNumber": 5636,
+          "line": "app.delete(\"/api/license-pools/:id\", requireManagerOrAbove, async (req, res) => {",
+          "action": "keep"
+        },
+        {
+          "lineNumber": 6212,
+          "line": "app.delete(\"/api/license-pools/:id\", requireManagerOrAbove, async (req, res) => {",
+          "action": "remove"
+        }
+      ]
+    }
+  ]
+}

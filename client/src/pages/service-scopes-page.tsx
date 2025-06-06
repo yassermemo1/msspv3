@@ -80,7 +80,7 @@ export default function ServiceScopesPage() {
         contractId: scope.contractId,
         serviceId: scope.serviceId,
         description: scope.scopeDefinition?.description || scope.notes || "No description provided",
-        deliverables: scope.scopeDefinition?.deliverables || [],
+        deliverables: Array.isArray(scope.scopeDefinition?.deliverables) ? scope.scopeDefinition.deliverables : [],
         timeline: "Ongoing", // Default value - could be calculated from dates
         status: scope.status || "active",
         clientId: scope.clientId,
@@ -398,7 +398,7 @@ export default function ServiceScopesPage() {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {contracts.map((contract) => (
+                                {(contracts || []).map((contract) => (
                                   <SelectItem key={contract.id} value={contract.id.toString()}>
                                     <div className="flex flex-col">
                                       <span className="font-medium">{contract.name}</span>
@@ -430,7 +430,7 @@ export default function ServiceScopesPage() {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {services.map((service) => (
+                                {(services || []).map((service) => (
                                   <SelectItem key={service.id} value={service.id.toString()}>
                                     {service.name}
                                   </SelectItem>
@@ -643,7 +643,7 @@ export default function ServiceScopesPage() {
                   </div>
                 ) : (
                   <div className="grid gap-4">
-                    {filteredScopes.map((scope) => (
+                    {(filteredScopes || []).map((scope) => (
                       <div key={scope.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
@@ -684,7 +684,7 @@ export default function ServiceScopesPage() {
                             <div>
                               <h4 className="text-sm font-medium text-gray-900 mb-2">Key Deliverables:</h4>
                               <div className="flex flex-wrap gap-2">
-                                {scope.deliverables.map((deliverable, index) => (
+                                {(scope.deliverables || []).map((deliverable, index) => (
                                   <Badge key={index} variant="outline" className="text-xs">
                                     {deliverable}
                                   </Badge>
@@ -779,7 +779,7 @@ export default function ServiceScopesPage() {
               <div>
                 <h3 className="text-sm font-medium text-gray-900 mb-2">Deliverables</h3>
                 <div className="flex flex-wrap gap-2">
-                  {selectedScope.deliverables.map((deliverable: string, index: number) => (
+                  {(selectedScope.deliverables || []).map((deliverable: string, index: number) => (
                     <Badge key={index} variant="outline" className="text-xs">
                       {deliverable}
                     </Badge>
@@ -818,7 +818,7 @@ export default function ServiceScopesPage() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {contracts.map((contract) => (
+                          {(contracts || []).map((contract) => (
                             <SelectItem key={contract.id} value={contract.id.toString()}>
                               {contract.name} - {getClientName(contract.clientId)}
                             </SelectItem>
@@ -839,16 +839,16 @@ export default function ServiceScopesPage() {
                       <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a service" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {services.map((service) => (
-                            <SelectItem key={service.id} value={service.id.toString()}>
-                              {service.name}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
+                                                            <SelectValue placeholder="Select a service" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {(services || []).map((service) => (
+                                <SelectItem key={service.id} value={service.id.toString()}>
+                                  {service.name}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
                       </Select>
                       <FormMessage />
                     </FormItem>

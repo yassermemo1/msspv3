@@ -6149,7 +6149,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // ========================================
 
   // Get all license pools
-  app.get("/api/license-pools", requireAuth, async (req, res) => {
+// TODO: Duplicate route removed - app.get("/api/license-pools", requireAuth, async (req, res) => {
     try {
       const pools = await storage.getAllLicensePools();
       res.json(pools);
@@ -6160,7 +6160,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get license pool by ID
-  app.get("/api/license-pools/:id", requireAuth, async (req, res) => {
+// TODO: Duplicate route removed - app.get("/api/license-pools/:id", requireAuth, async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       const pool = await storage.getLicensePool(id);
@@ -6177,7 +6177,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Create license pool
-  app.post("/api/license-pools", requireManagerOrAbove, async (req, res) => {
+// TODO: Duplicate route removed - app.post("/api/license-pools", requireManagerOrAbove, async (req, res) => {
     try {
       const poolData = req.body;
       const newPool = await storage.createLicensePool(poolData);
@@ -6191,7 +6191,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Update license pool
-  app.put("/api/license-pools/:id", requireManagerOrAbove, async (req, res) => {
+// TODO: Duplicate route removed - app.put("/api/license-pools/:id", requireManagerOrAbove, async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       const poolData = req.body;
@@ -6209,7 +6209,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Delete license pool
-  app.delete("/api/license-pools/:id", requireManagerOrAbove, async (req, res) => {
+// TODO: Duplicate route removed - app.delete("/api/license-pools/:id", requireManagerOrAbove, async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       const deleted = await storage.deleteLicensePool(id);
@@ -6450,7 +6450,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // ========================================
 
   // Get all certificates of compliance
-  app.get("/api/certificates-of-compliance", requireAuth, async (req, res) => {
+// TODO: Duplicate route removed - app.get("/api/certificates-of-compliance", requireAuth, async (req, res) => {
     try {
       const { clientId, contractId, serviceScopeId, status } = req.query;
       
@@ -6510,7 +6510,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Create certificate of compliance
-  app.post("/api/certificates-of-compliance", requireManagerOrAbove, async (req, res) => {
+// TODO: Duplicate route removed - app.post("/api/certificates-of-compliance", requireManagerOrAbove, async (req, res) => {
     try {
       const {
         clientId,
@@ -6616,7 +6616,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Delete certificate of compliance
-  app.delete("/api/certificates-of-compliance/:id", requireManagerOrAbove, async (req, res) => {
+// TODO: Duplicate route removed - app.delete("/api/certificates-of-compliance/:id", requireManagerOrAbove, async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       
